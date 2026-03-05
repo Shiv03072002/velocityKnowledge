@@ -230,13 +230,13 @@ function CardItem({ card, isMobile = false }) {
     return (
         <div
             className={`group relative rounded-xl p-8 overflow-hidden transition-all duration-500 cursor-pointer border border-gray-200
-        ${isMobile ? "min-h-[200px] hover:shadow-md" : "min-h-[190px] hover:scale-105 hover:shadow-lg"}
-        ${isFirst ? "bg-[#1E6FD9] text-white border-transparent" : "bg-white"}`}
+                ${isMobile ? "min-h-[200px] hover:shadow-md" : "min-h-[190px] hover:scale-105 hover:shadow-lg"}
+                ${isFirst && !isMobile ? "bg-[#1E6FD9] text-white border-transparent" : "bg-white"}`}
         >
             <div className={`absolute -top-8 -right-8 w-24 h-24 ${card.half} rounded-full transition-all duration-700 ease-in-out group-hover:scale-150`} />
 
-            <div className="relative z-10 flex flex-col h-full gap-3">
-                {/* Icon */}
+            <div className="relative z-10 flex flex-col h-full">
+                {/* Icon at top */}
                 <div
                     className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-500
                         ${isMobile
@@ -256,31 +256,46 @@ function CardItem({ card, isMobile = false }) {
                     />
                 </div>
 
-                {/* Title — always visible */}
-                <p className={`font-bold text-xl mt-auto ${isFirst ? "text-white" : "text-gray-900"}`}>
-                    {card.title}
-                </p>
+                {/* Spacer to push content to bottom */}
+                <div className="flex-1"></div>
 
-                {/* Description — always visible on mobile, hover-only on desktop */}
-                {isMobile ? (
-                    <>
+                {/* Content Container - fixed height at bottom */}
+                <div className="relative h-[70px] mt-auto">
+                    {/* Title - aligned to bottom */}
+                    <div className={`absolute bottom-0 left-0 w-full transition-opacity duration-300
+                        ${isMobile 
+                            ? "opacity-100"
+                            : "opacity-100 group-hover:opacity-0"
+                        }`}>
+                        <p className={`font-bold text-xl ${isFirst && !isMobile ? "text-white" : "text-gray-900"}`}>
+                            {card.title}
+                        </p>
+                    </div>
+
+                    {/* Hover Content - Only for desktop */}
+                    {!isMobile && (
+                        <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div className="flex flex-col">
+                                <p className={`${isFirst ? "text-white/90" : "text-gray-600"} text-sm mb-2`}>
+                                    {card.description}
+                                </p>
+                                <span className={`${isFirst ? "text-white" : "text-[#1E6FD9]"} text-sm font-semibold flex items-center gap-1`}>
+                                    View Courses <ArrowRight size={14} />
+                                </span>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Mobile Content - Always visible */}
+                {isMobile && (
+                    <div className="mt-4">
                         <p className={`${isFirst ? "text-white/90" : "text-gray-600"} text-sm leading-relaxed`}>
                             {card.description}
                         </p>
-                        <span className={`${isFirst ? "text-white" : "text-[#1E6FD9]"} text-sm font-semibold flex items-center gap-1`}>
+                        <span className={`${isFirst ? "text-white" : "text-[#1E6FD9]"} text-sm font-semibold flex items-center gap-1 mt-3`}>
                             View Courses <ArrowRight size={14} />
                         </span>
-                    </>
-                ) : (
-                    <div className="relative">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <p className={`${isFirst ? "text-white/90" : "text-gray-600"} text-sm mb-2`}>
-                                {card.description}
-                            </p>
-                            <span className={`${isFirst ? "text-white" : "text-[#1E6FD9]"} text-sm font-semibold flex items-center gap-1`}>
-                                View Courses <ArrowRight size={14} />
-                            </span>
-                        </div>
                     </div>
                 )}
             </div>

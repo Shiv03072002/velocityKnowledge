@@ -73,7 +73,7 @@ export default function InsightsSection() {
             <div className="hidden lg:flex gap-4 mt-30">
               <button
                 onClick={() => swiperRef.current?.slidePrev()}
-                className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:text-white hover:bg-gray-400 transition-all duration-300 hover:scale-105"
+                className="w-12 h-12 rounded-full bg-[#EAF2FD] flex items-center justify-center text-[#1E6FD9]  transition-all duration-300 hover:scale-105"
               >
                 <ArrowLeft size={18} />
               </button>
