@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const ORG_TYPES = [
   {
@@ -43,21 +43,21 @@ export default function WhoWeHelp() {
     <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-16">
-          <div className="max-w-2xl">
-            <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#1E6FD9] "></span>
-              WHO WE HELP
-            </p>
-            <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 leading-tight  ">
-              Training for Different Types of Organizations
-            </h2>
-          </div>
-          <p className="text-gray-500 text-base max-w-md lg:text-right">
-            We create custom training programs for companies,
-            large organizations, and government teams.
-          </p>
-        </div>
+       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-16">
+  <div className="max-w-2xl text-center lg:text-left">
+    <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center lg:justify-start">
+      <span className="w-2 h-2 bg-[#1E6FD9]"></span>
+      WHO WE HELP
+    </p>
+    <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 leading-tight">
+      Training for Different Types of Organizations
+    </h2>
+  </div>
+  <p className="text-gray-500 text-base max-w-md mx-auto lg:mx-0 lg:text-right text-center">
+    We create custom training programs for companies,
+    large organizations, and government teams.
+  </p>
+</div>
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-8">
@@ -69,10 +69,50 @@ export default function WhoWeHelp() {
     </section>
   );
 }
-
 function Card({ org }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Check if mobile on mount and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // On mobile, always show the content with white background
+  if (isMobile) {
+    return (
+      <div className="relative rounded-xl overflow-hidden h-[380px] bg-white border border-gray-200 shadow-sm">
+        {/* Content Layer */}
+        <div className="absolute inset-0 bg-white p-8 flex flex-col justify-between">
+          <div>
+            <p className="text-2xl font-semibold text-gray-900 mb-6">{org.title}</p>
+            <ul className="space-y-3 text-sm">
+              {org.bullets.map((point, index) => (
+                <li key={point} className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-[#1E6FD9] rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="text-gray-600">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Button */}
+          <button className="bg-[#1E6FD9] text-white font-medium py-3 rounded-lg mt-8 hover:bg-[#1a5cb8] transition-colors w-full">
+            Explore Program
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop version with hover effects (original code)
   return (
     <div
       className="relative rounded-xl overflow-hidden cursor-pointer h-[380px]"

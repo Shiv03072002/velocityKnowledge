@@ -117,13 +117,13 @@ export default function Navbar() {
 
             {/* Mobile Menu Panel */}
             <div 
-                className={`fixed top-0 right-0 h-full w-full max-w-sm bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out md:hidden ${
+                className={`fixed top-0 right-0 h-full w-full bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out md:hidden ${
                     menuOpen ? 'translate-x-0' : 'translate-x-full'
                 }`}
             >
                 <div className="flex flex-col h-full">
                     {/* Mobile Menu Header */}
-                    <div className="flex items-center justify-between p-4 border-b">
+                    <div className="flex items-center justify-between p-4 border-b border-gray-200">
                         <div 
                             className="relative h-8 w-32 cursor-pointer"
                             onClick={() => {
@@ -184,7 +184,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile Menu Footer */}
-                    <div className="border-t p-6">
+                    <div className="border-t border-gray-200 p-6">
                         <p className="text-sm text-gray-500 text-center">
                             © 2024 Velocity Knowledge. All rights reserved.
                         </p>

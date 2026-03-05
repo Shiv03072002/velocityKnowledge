@@ -18,9 +18,9 @@ export default function Home() {
       <WhoWeHelp/>
       <Missionvision />
       <Programssection />
+      <Livesessions />
       <Trainingbuilt />
       <Ourapproach />
-      <Livesessions />
       <InsightsSection/>
       <Cta />
     </div>

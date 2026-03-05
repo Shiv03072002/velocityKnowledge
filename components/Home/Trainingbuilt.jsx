@@ -49,16 +49,16 @@ export default function TrainingBuilt() {
     <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Small Label */}
-        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
+        {/* Small Label - Centered on mobile */}
+        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center lg:justify-start">
           <span className="w-2 h-2 bg-[#1E6FD9]"></span>
           HOW WE ARE DIFFERENT
         </p>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           
-          {/* LEFT SIDE */}
-          <div>
+          {/* LEFT SIDE - Hidden on mobile, visible on lg */}
+          <div className="hidden lg:block">
             <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 mb-6 leading-tight">
               Training built for real problems
             </h2>
@@ -80,21 +80,36 @@ export default function TrainingBuilt() {
           </div>
 
           {/* RIGHT SIDE FEATURES */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:col-span-1">
+            
+            {/* Mobile Heading - Visible only on mobile, centered */}
+            <div className="lg:hidden text-center">
+              <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 mb-6 leading-tight">
+                Training built for real problems
+              </h2>
+
+              <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-md mx-auto">
+                Most training content is generic. We focus on practical
+                scenarios drawn from real work challenges and deliver
+                outcomes your team can immediately apply.
+              </p>
+            </div>
+
+            {/* All Feature Cards - Left aligned on mobile */}
             {FEATURES.map((feature) => {
               const IconComponent = feature.icon;
 
               return (
                 <div
                   key={feature.title}
-                  className={`group relative overflow-hidden border border-gray-200 rounded-xl p-6 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${feature.hoverBg} hover:text-white`}
+                  className={`group relative overflow-hidden border border-gray-200 rounded-xl p-6 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${feature.hoverBg} hover:text-white text-left`}
                 >
                   {/* Half Circle - Light color, scales on hover */}
                   <div 
                     className={`absolute -top-12 -right-12 w-36 h-36 rounded-full transition-all duration-700 ease-in-out group-hover:scale-150 ${feature.circleColor} group-hover:opacity-20`}
                   ></div>
 
-                  {/* Icon - White background on hover */}
+                  {/* Icon - Left aligned */}
                   <div
                     className={`relative z-10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${feature.iconBg} group-hover:bg-white group-hover:scale-110`}
                   >
@@ -116,6 +131,17 @@ export default function TrainingBuilt() {
                 </div>
               );
             })}
+
+            {/* Mobile Image - Visible only on mobile, after all cards */}
+            <div className="lg:hidden mt-6">
+              <div className="rounded-2xl overflow-hidden shadow-md">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1677535270067-41a5a1722527?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Training session with professionals in a workshop"
+                  className="object-cover w-full h-[300px] md:h-[400px]"
+                />
+              </div>
+            </div>
           </div>
 
         </div>

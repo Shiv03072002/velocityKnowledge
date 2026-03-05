@@ -23,22 +23,22 @@ export default function MissionVision() {
         {/* Top section */}
         <div className="grid md:grid-cols-2 items-start gap-10 mb-12">
           {/* LEFT SIDE */}
-          <div>
-            {/* Top Label */}
-            <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#1E6FD9]"></span>
-              WHO WE ARE
-            </p>
+          <div className="text-center md:text-left">
+  {/* Top Label */}
+  <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center md:justify-start">
+    <span className="w-2 h-2 bg-[#1E6FD9]"></span>
+    WHO WE ARE
+  </p>
 
-            {/* Heading */}
-            <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 mb-6 leading-tight">
-              Building capability through guided learning
-            </h2>
+  {/* Heading */}
+  <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 mb-6 leading-tight">
+    Building capability through guided learning
+  </h2>
 
-            <p className="text-gray-500 text-base">
-              We design instructor-led training programs for organizations and professionals.
-            </p>
-          </div>
+  <p className="text-gray-500 text-base max-w-md mx-auto md:mx-0">
+    We design instructor-led training programs for organizations and professionals.
+  </p>
+</div>
 
           {/* RIGHT SIDE (Decorative Squares) */}
           <div className="relative hidden md:flex justify-end items-start h-full">
@@ -66,9 +66,9 @@ export default function MissionVision() {
               {/* Divider - increases in width on hover */}
               <div className={`w-10 h-1 ${card.dividerColor} mb-6 group-hover:w-27 transition-all duration-300 ease-in-out`}></div>
 
-              <p className="text-gray-600 text-sm leading-relaxed max-w-sm relative z-10">
-                {card.description}
-              </p>
+              <p className="text-gray-600 text-sm leading-relaxed max-w-[250px] md:max-w-sm relative z-10">
+  {card.description}
+</p>
             </div>
           ))}
         </div>

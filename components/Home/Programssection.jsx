@@ -1,4 +1,6 @@
 "use client";
+import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 
 const TABS = ["All", "Trending", "Upcoming", "Popular", "New"];
 
@@ -48,50 +50,113 @@ const COURSES = [
 ];
 
 export default function ProgramsSection() {
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [activeTab, setActiveTab] = useState("All");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setVisibleCount(3);
+    } else {
+      setVisibleCount(6);
+    }
+  }, [isMobile]);
+
+  const filteredCourses = activeTab === "All" 
+    ? COURSES 
+    : COURSES.filter(course => course.tag === activeTab);
+
+  const visibleCourses = filteredCourses.slice(0, visibleCount);
+  const hasMore = isMobile && visibleCount < filteredCourses.length;
+
+  const showMore = () => {
+    setVisibleCount(prev => Math.min(prev + 3, filteredCourses.length));
+  };
+
   return (
-    <section className="bg-white py-24">
+    <section className="bg-[#F8FAFC] py-24">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Small Label */}
-        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
-          <span className="w-2 h-2 bg-[#1E6FD9]"></span>
-          WHAT WE BUILD
-        </p>
+        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center lg:justify-start">
+  <span className="w-2 h-2 bg-[#1E6FD9]"></span>
+  WHAT WE BUILD
+</p>
 
-        {/* Heading + Tabs Row */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+{/* Heading + Tabs Row - Original LG layout */}
+<div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+  
+  {/* Heading */}
+  <div className="text-center lg:text-left">
+    <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 max-w-2xl leading-tight mx-auto lg:mx-0">
+      Programs designed for real situations
+    </h2>
+    <p className="text-gray-500 text-base mt-4 max-w-xl mx-auto lg:mx-0">
+      These are examples of programs we run. They are guided,
+      practical, and shaped around how people actually work.
+    </p>
+  </div>
+
+          {/* Tabs - Different for mobile vs desktop */}
           
-          {/* Heading */}
-          <div>
-            <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 max-w-2xl leading-tight">
-              Programs designed for real situations
-            </h2>
-            <p className="text-gray-500 text-base mt-4 max-w-xl">
-              These are examples of programs we run. They are guided,
-              practical, and shaped around how people actually work.
-            </p>
-          </div>
-
-          {/* Tabs */}
-          <div className="bg-gray-100 p-3 rounded-sm flex gap-1">
-            {TABS.map((tab, i) => (
-              <button
-                key={tab}
-                className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 ${
-                  i === 0
-                    ? "bg-white  text-gray-900"
-                    : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+         {!isMobile ? (
+  // Desktop tabs - Original, right-aligned
+  <div className="bg-gray-100 p-3 rounded-sm flex gap-1">
+    {TABS.map((tab) => (
+      <button
+        key={tab}
+        onClick={() => {
+          setActiveTab(tab);
+        }}
+        className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 ${
+          activeTab === tab
+            ? "bg-white text-gray-900"
+            : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
+        }`}
+      >
+        {tab}
+      </button>
+    ))}
+  </div>
+) : (
+  // Mobile tabs - Scrollable
+  <div className="w-full overflow-x-auto pb-2 -mx-6 px-6 scrollbar-hide lg:hidden">
+    <div className="bg-gray-100 p-3 rounded-sm flex gap-1 min-w-max">
+      {TABS.map((tab) => (
+        <button
+          key={tab}
+          onClick={() => {
+            setActiveTab(tab);
+            setVisibleCount(3);
+          }}
+          className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 whitespace-nowrap ${
+            activeTab === tab
+              ? "bg-white text-gray-900"
+              : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
+          }`}
+        >
+          {tab}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
         </div>
 
         {/* Cards Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {COURSES.map((course) => (
+          {visibleCourses.map((course) => (
             <div
               key={course.title}
               className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -103,13 +168,11 @@ export default function ProgramsSection() {
                     <div key={i} className="bg-gray-300 rounded"></div>
                   ))}
                 </div>
-                {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               {/* Card Content */}
               <div className="p-6">
-                {/* Tag */}
                 <span
                   className={`text-xs font-medium px-2 py-1 rounded inline-block transition-all duration-200 group-hover:scale-105 ${course.tagColor}`}
                 >
@@ -124,7 +187,6 @@ export default function ProgramsSection() {
                   {course.description}
                 </p>
 
-                {/* Outline Button */}
                 <button className="mt-6 w-full border border-[#1E6FD9] text-[#1E6FD9] hover:text-white text-sm font-medium py-2 rounded-md hover:bg-[#1E6FD9] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
                   View Details
                 </button>
@@ -132,7 +194,29 @@ export default function ProgramsSection() {
             </div>
           ))}
         </div>
+
+        {/* Show More Button - Only on mobile */}
+        {hasMore && (
+          <div className="flex justify-center mt-12 lg:hidden">
+            <button
+              onClick={showMore}
+              className="flex items-center gap-2 border border-[#1E6FD9] text-[#1E6FD9] hover:text-white px-8 py-3 rounded-lg hover:bg-[#1E6FD9] transition-all duration-200 font-medium"
+            >
+              Show More Programs
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 }
+
+// Add this to your global CSS file
+// .scrollbar-hide::-webkit-scrollbar {
+//   display: none;
+// }
+// .scrollbar-hide {
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+// }

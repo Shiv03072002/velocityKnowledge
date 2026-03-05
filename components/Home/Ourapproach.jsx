@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const STEPS = [
@@ -31,23 +31,49 @@ const STEPS = [
 
 export default function OurApproach() {
   const [openIndexes, setOpenIndexes] = useState([0]); // First card open by default
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Update openIndexes when mobile status changes
+  useEffect(() => {
+    if (isMobile) {
+      setOpenIndexes([0, 1, 2, 3]); // All open on mobile
+    } else {
+      setOpenIndexes([0]); // Only first open on desktop
+    }
+  }, [isMobile]);
 
   const toggleCard = (index) => {
-    setOpenIndexes(prev =>
-      prev.includes(index)
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
+    if (!isMobile) {
+      // Only allow toggling on desktop
+      setOpenIndexes(prev =>
+        prev.includes(index)
+          ? prev.filter(i => i !== index)
+          : [...prev, index]
+      );
+    }
+    // On mobile, do nothing - cards stay open
   };
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-[#F8FAFC] py-20">
       <div className="max-w-7xl mx-auto px-6 text-center">
 
-       <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center justify-center gap-2">
-  <span className="w-2 h-2 bg-[#1E6FD9] inline-block"></span>
-  OUR APPROACH
-</p>
+        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center justify-center gap-2">
+          <span className="w-2 h-2 bg-[#1E6FD9] inline-block"></span>
+          OUR APPROACH
+        </p>
 
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -72,14 +98,14 @@ export default function OurApproach() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => toggleCard(index)}
-                className="cursor-pointer"
+                className={!isMobile ? "cursor-pointer" : ""}
               >
                 <motion.div 
-                  className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200"
-                  whileHover={{ 
+                  className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 text-center sm:text-left"
+                  whileHover={!isMobile ? { 
                     boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                     y: -2
-                  }}
+                  } : {}}
                   transition={{ duration: 0.2 }}
                 >
                   
@@ -88,26 +114,24 @@ export default function OurApproach() {
                     <motion.div 
                       className="w-14 h-14 mx-auto mb-6 rounded-xl border flex items-center justify-center text-xl font-semibold"
                       animate={{
-                        
                         borderColor: isOpen ? "#2563EB" : "#E5E7EB",
                         scale: isOpen ? 1.1 : 1
                       }}
                       transition={{ duration: 0.3 }}
                     >
                       <motion.span
-                       
                         transition={{ duration: 0.3 }}
                       >
                         {step.num}
                       </motion.span>
                     </motion.div>
 
-                    <h3 className="font-semibold text-gray-900 text-base mb-2">
+                    <h3 className="font-semibold text-gray-900 text-base mb-2 text-center ">
                       {step.title}
                     </h3>
                   </div>
 
-                  {/* Bottom Section with Animation */}
+                  {/* Bottom Section with Animation - Same design, but all open on mobile */}
                   <AnimatePresence initial={false}>
                     {isOpen ? (
                       <motion.div
@@ -123,7 +147,7 @@ export default function OurApproach() {
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: -20, opacity: 0 }}
                           transition={{ duration: 0.3, delay: 0.1 }}
-                          className="p-6"
+                          className="p-6 text-center sm:text-left"
                         >
                           <p className="text-sm leading-relaxed">
                             {step.description}
@@ -145,8 +169,6 @@ export default function OurApproach() {
             );
           })}
         </div>
-
-       
 
       </div>
     </section>
