@@ -3,7 +3,7 @@ import { DM_Sans, DM_Serif_Text } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-
+import SmoothScroll from "@/utils/SmoothScroll";
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
@@ -30,7 +30,9 @@ export default function RootLayout({
     <html lang="en" className={`${dmSans.variable} ${dmSerif.variable}`}>
       <body className="antialiased ">
         <Navbar />
+        <SmoothScroll>
         {children}
+        </SmoothScroll>
         <Footer />
       </body>
     </html>
