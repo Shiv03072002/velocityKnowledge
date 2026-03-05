@@ -43,14 +43,14 @@ export default function Navbar() {
         <>
             <div className="bg-white sticky top-0 z-50 transition-all duration-300" >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16 md:h-20">
+                    <div className="flex items-center justify-between h-18 md:h-20">
                         
                         {/* Logo - Links to home */}
                         <div 
                             className="flex items-center flex-1 md:flex-none cursor-pointer"
                             onClick={() => window.location.href = '/'}
                         >
-                            <div className="relative h-10 w-32 sm:h-12 sm:w-40 md:h-20 md:w-60">
+                            <div className="relative h-12 w-60  md:h-20 md:w-60">
                                 <Image
                                     src="/images/logo.png"
                                     alt="Velocity Knowledge Logo"
@@ -97,7 +97,7 @@ export default function Navbar() {
 
                         {/* Mobile Menu Button - Visible only on mobile */}
                         <button
-                            className="md:hidden text-gray-600 hover:text-black p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            className="md:hidden text-gray-600 hover:text-black p-2 rounded-full hover:bg-gray-100 transition-colors  border border-gray-200"
                             onClick={() => setMenuOpen(!menuOpen)}
                             aria-label="Toggle menu"
                         >
@@ -125,7 +125,7 @@ export default function Navbar() {
                     {/* Mobile Menu Header */}
                     <div className="flex items-center justify-between p-4 border-b border-gray-200">
                         <div 
-                            className="relative h-8 w-32 cursor-pointer"
+                            className="relative h-12 w-60 cursor-pointer"
                             onClick={() => {
                                 window.location.href = '/';
                                 setMenuOpen(false);
@@ -140,7 +140,7 @@ export default function Navbar() {
                         </div>
                         <button
                             onClick={() => setMenuOpen(false)}
-                            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                            className="p-2 hover:bg-gray-100 rounded-full transition-colors border border-gray-200"
                             aria-label="Close menu"
                         >
                             <X size={20} />
