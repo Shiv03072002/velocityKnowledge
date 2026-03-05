@@ -27,7 +27,7 @@ export default function ProgramsHeader() {
       className="flex-1 px-4 py-3 outline-none text-gray-700"
     />
 
-    <button className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition">
+    <button className="bg-[#1E6FD9] text-white px-6 py-3 rounded-xl  transition">
       Search
     </button>
 

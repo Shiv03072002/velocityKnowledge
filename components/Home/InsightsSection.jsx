@@ -27,7 +27,7 @@ export default function InsightsSection() {
           
           {/* LEFT CONTENT - 2/5 (40%) */}
           <div className="lg:col-span-2">
-            <p className="text-[#1E6FD9] text-xs uppercase tracking-widest font-semibold mb-6 flex items-center gap-2">
+            <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-6 flex items-center gap-2">
               <span className="w-2 h-2 bg-[#1E6FD9]"></span>
               INSIGHTS & RESOURCES
             </p>

@@ -194,7 +194,7 @@ ${isFirst
                                                 {card.description}
                                             </p>
 
-                                            <span className={`${isFirst ? "text-white" : "text-blue-600"} text-sm font-semibold flex items-center gap-1`}>
+                                            <span className={`${isFirst ? "text-white" : "text-[#1E6FD9]"} text-sm font-semibold flex items-center gap-1`}>
                                                 View Courses <ArrowRight size={14} />
                                             </span>
                                         </div>

@@ -45,8 +45,8 @@ export default function WhoWeHelp() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
-            <p className="text-blue-600 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-blue-600 "></span>
+            <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#1E6FD9] "></span>
               WHO WE HELP
             </p>
             <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 leading-tight  ">
@@ -113,7 +113,7 @@ function Card({ org }) {
 
       {/* Blue Hover Layer - Grows from top left */}
       <motion.div 
-        className="absolute inset-0 bg-blue-600 text-white p-8 flex flex-col justify-between"
+        className="absolute inset-0 bg-[#1E6FD9] text-white p-8 flex flex-col justify-between"
         initial={{ scale: 0, opacity: 0 }}
         animate={{
           scale: isHovered ? 1 : 0,
@@ -145,7 +145,7 @@ function Card({ org }) {
 
         {/* Button slides from bottom */}
         <motion.button
-          className="bg-white text-blue-600 font-medium py-3 rounded-lg mt-8 hover:bg-gray-100 transition-colors w-full"
+          className="bg-white text-[#1E6FD9] font-medium py-3 rounded-lg mt-8 hover:bg-gray-100 transition-colors w-full"
           initial={{ y: 100, opacity: 0 }}
           animate={{
             y: isHovered ? 0 : 100,

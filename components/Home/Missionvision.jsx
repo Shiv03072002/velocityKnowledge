@@ -6,7 +6,7 @@ export default function MissionVision() {
       color: "blue",
       description: "Our mission is to help organizations build real skills through guided, instructor-led training.",
       bgColor: "bg-blue-100",
-      dividerColor: "bg-blue-600"
+      dividerColor: "bg-[#1E6FD9]"
     },
     {
       title: "OUR VISION",
@@ -25,8 +25,8 @@ export default function MissionVision() {
           {/* LEFT SIDE */}
           <div>
             {/* Top Label */}
-            <p className="text-blue-600 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-blue-600"></span>
+            <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#1E6FD9]"></span>
               WHO WE ARE
             </p>
 

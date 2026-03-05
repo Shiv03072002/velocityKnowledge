@@ -53,8 +53,8 @@ export default function ProgramsSection() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Small Label */}
-        <p className="text-blue-600 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
-          <span className="w-2 h-2 bg-blue-600"></span>
+        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
+          <span className="w-2 h-2 bg-[#1E6FD9]"></span>
           WHAT WE BUILD
         </p>
 
@@ -125,7 +125,7 @@ export default function ProgramsSection() {
                 </p>
 
                 {/* Outline Button */}
-                <button className="mt-6 w-full border border-blue-500 text-blue-600 hover:text-white text-sm font-medium py-2 rounded-md hover:bg-blue-600 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
+                <button className="mt-6 w-full border border-[#1E6FD9] text-[#1E6FD9] hover:text-white text-sm font-medium py-2 rounded-md hover:bg-[#1E6FD9] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
                   View Details
                 </button>
               </div>

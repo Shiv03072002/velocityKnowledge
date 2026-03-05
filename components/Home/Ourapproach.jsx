@@ -44,8 +44,8 @@ export default function OurApproach() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6 text-center">
 
-       <p className="text-[#1E6FD9] text-xs uppercase tracking-widest font-semibold mb-4 flex items-center justify-center gap-2">
-  <span className="w-2 h-2 bg-blue-600 inline-block"></span>
+       <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center justify-center gap-2">
+  <span className="w-2 h-2 bg-[#1E6FD9] inline-block"></span>
   OUR APPROACH
 </p>
 

@@ -11,7 +11,7 @@ export default function ContactInfoSection() {
         </p>
 
         <p className="mt-4 text-lg md:text-xl text-gray-600">
-          <a href="/contact" className="text-blue-600 font-semibold hover:underline">
+          <a href="/contact" className="text-[#1E6FD9] font-semibold hover:underline">
             Contact us
           </a>{" "}
           to discuss format and availability.

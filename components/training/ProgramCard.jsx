@@ -5,8 +5,8 @@ export default function ProgramCard({ program }) {
     <div className="flex items-center gap-6 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition">
 
       {/* Icon */}
-      <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
-        <QrCode size={28} className="text-blue-600" />
+      <div className="w-16 h-16 rounded-lg bg-[#EAF2FD] flex items-center justify-center shrink-0">
+        <QrCode size={28} className="text-[#1E6FD9]" />
       </div>
 
       {/* Content */}
@@ -43,7 +43,7 @@ export default function ProgramCard({ program }) {
             {program.duration}
           </div>
 
-          <button className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition">
+          <button className="flex items-center gap-2 bg-[#1E6FD9] text-white px-5 py-2.5 rounded-lg  transition">
             View Details
             <ArrowRight size={16} />
           </button>

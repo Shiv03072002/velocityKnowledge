@@ -50,7 +50,7 @@ export default function TrainingBuilt() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Small Label */}
-        <p className="text-[#1E6FD9] text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
+        <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2">
           <span className="w-2 h-2 bg-[#1E6FD9]"></span>
           HOW WE ARE DIFFERENT
         </p>
