@@ -18,7 +18,7 @@ export default function Home() {
       <WhoWeHelp/>
       <Missionvision />
       <Programssection />
-      <Livesessions />
+      {/* <Livesessions /> */}
       <Trainingbuilt />
       <Ourapproach />
       <InsightsSection/>

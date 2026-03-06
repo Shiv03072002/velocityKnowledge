@@ -35,7 +35,7 @@ export default function ContactSection() {
     </span>
   </div>
 
-  <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6" style={{ fontFamily: "Georgia, serif" }}>
+  <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6 [font-family:var(--font-dm-serif)]" >
     Let's build skills that matter
   </h2>
 
@@ -45,7 +45,7 @@ export default function ContactSection() {
 </div>
 
           {/* Right: Form card - 50% */}
-          <div className="lg:w-1/2 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-8">
+          <div className="lg:w-1/2 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:p-8">
             <h3 className="text-white text-xl font-semibold mb-6">Send us a message</h3>
 
             <div className="flex flex-col gap-4">

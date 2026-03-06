@@ -53,7 +53,7 @@ export default function WhoWeHelp() {
       Training for Different Types of Organizations
     </h2>
   </div>
-  <p className="text-gray-500 text-base max-w-md mx-auto lg:mx-0 lg:text-right text-center">
+  <p className="text-gray-500 text-base max-w-md mx-auto lg:mx-0 lg:text-left text-center">
     We create custom training programs for companies,
     large organizations, and government teams.
   </p>

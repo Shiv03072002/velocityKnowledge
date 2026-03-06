@@ -63,7 +63,7 @@ export default function TrainingBuilt() {
               Training built for real problems
             </h2>
 
-            <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-md">
+            <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-sm">
               Most training content is generic. We focus on practical
               scenarios drawn from real work challenges and deliver
               outcomes your team can immediately apply.
@@ -72,7 +72,7 @@ export default function TrainingBuilt() {
             {/* Unsplash Image */}
             <div className="rounded-2xl overflow-hidden shadow-md">
               <img
-                src="https://plus.unsplash.com/premium_photo-1677535270067-41a5a1722527?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="/images/training/img.jpg"
                 alt="Training session with professionals in a workshop"
                 className="object-cover w-full h-[540px]"
               />
@@ -88,7 +88,7 @@ export default function TrainingBuilt() {
                 Training built for real problems
               </h2>
 
-              <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-md mx-auto">
+              <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-xs mx-auto">
                 Most training content is generic. We focus on practical
                 scenarios drawn from real work challenges and deliver
                 outcomes your team can immediately apply.
@@ -136,7 +136,7 @@ export default function TrainingBuilt() {
             <div className="lg:hidden mt-6">
               <div className="rounded-2xl overflow-hidden shadow-md">
                 <img
-                  src="https://plus.unsplash.com/premium_photo-1677535270067-41a5a1722527?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="/images/training/img.jpg"
                   alt="Training session with professionals in a workshop"
                   className="object-cover w-full h-[300px] md:h-[400px]"
                 />
