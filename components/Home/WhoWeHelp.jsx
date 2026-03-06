@@ -7,7 +7,7 @@ const ORG_TYPES = [
     title: "Corporates",
     description: "Training for company teams",
     image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      "/images/help/2440ead2c912dcf158cce12e838157e898fe7879.jpg",
     bullets: [
       "Learn AI and tech for daily work",
       "Improve team productivity",
@@ -18,7 +18,7 @@ const ORG_TYPES = [
     title: "Enterprise",
     description: "Training for large organizations",
     image:
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80",
+      "/images/help/da22a79fb68dad6c3e030c4057fe3ec795aeec62.jpg",
     bullets: [
       "Enterprise-level scalability",
       "Strategic digital transformation",
@@ -29,7 +29,7 @@ const ORG_TYPES = [
     title: "Government",
     description: "Training for public sector teams",
     image:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+      "/images/help/83a05e5154513b1c39c26603dfb64136ed7eb7f6.jpg",
     bullets: [
       "Policy & compliance training",
       "Public sector modernization",
