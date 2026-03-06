@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Sparkles, Users, Layers, Target } from "lucide-react";
+import { Sparkles, Users, Layers, Target,UserStar,BookMarked,ChartNetwork } from "lucide-react";
 
 const FEATURES = [
   {
@@ -10,37 +10,37 @@ const FEATURES = [
     hoverBg: "hover:bg-blue-600",
     title: "Tailored Solutions",
     description:
-      "We customize learning programs to align with your team's real challenges and goals.",
+      "We don’t use one fixed plan. Each program is customized to match your tools, work style, and team culture.",
   },
   {
-    icon: Users,
+    icon: UserStar,
     iconBg: "bg-green-100",
     iconColor: "text-green-600",
     circleColor: "bg-green-50",
     hoverBg: "hover:bg-green-600",
     title: "Practitioner-Led",
     description:
-      "Learn from experienced professionals who bring real-world expertise into every session.",
+      "Sessions are led by experienced engineers and leaders who work in the field, not full-time trainers.",
   },
   {
-    icon: Layers,
+    icon: BookMarked,
     iconBg: "bg-purple-100",
     iconColor: "text-purple-600",
     circleColor: "bg-purple-50",
     hoverBg: "hover:bg-purple-600",
     title: "Mixed Methods",
     description:
-      "Blended approaches including workshops, exercises, and applied projects.",
+      "We use different ways to learn, including live workshops, simple assessments, and one-to-one coaching when needed.",
   },
   {
-    icon: Target,
+    icon: ChartNetwork,
     iconBg: "bg-orange-100",
     iconColor: "text-orange-600",
     circleColor: "bg-orange-50",
     hoverBg: "hover:bg-orange-600",
     title: "Outcomes Focused",
     description:
-      "We focus on measurable impact and results that matter for your organization.",
+      "We look at real improvement in work and results, not just time spent in sessions.",
   },
 ];
 
@@ -96,41 +96,59 @@ export default function TrainingBuilt() {
             </div>
 
             {/* All Feature Cards - Left aligned on mobile */}
-            {FEATURES.map((feature) => {
-              const IconComponent = feature.icon;
+           {FEATURES.map((feature, index) => {
+  const IconComponent = feature.icon;
 
-              return (
-                <div
-                  key={feature.title}
-                  className={`group relative overflow-hidden border border-gray-200 rounded-xl p-6 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${feature.hoverBg} hover:text-white text-left`}
-                >
-                  {/* Half Circle - Light color, scales on hover */}
-                  <div 
-                    className={`absolute -top-12 -right-12 w-36 h-36 rounded-full transition-all duration-700 ease-in-out group-hover:scale-150 ${feature.circleColor} group-hover:opacity-20`}
-                  ></div>
+  // Map index to specific background classes
+  const bgClasses = [
+    'bg-blue-600',
+    'bg-green-600', 
+    'bg-purple-600',
+    'bg-orange-600'
+  ];
 
-                  {/* Icon - Left aligned */}
-                  <div
-                    className={`relative z-10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${feature.iconBg} group-hover:bg-white group-hover:scale-110`}
-                  >
-                    <IconComponent
-                      size={22}
-                      className={`${feature.iconColor} transition-colors duration-300 group-hover:${feature.iconColor}`}
-                    />
-                  </div>
+  // Map index to specific text color classes for hover
+  const textColorClasses = [
+    'group-hover:text-blue-600',
+    'group-hover:text-green-600',
+    'group-hover:text-purple-600',
+    'group-hover:text-orange-600'
+  ];
 
-                  {/* Title */}
-                  <h3 className="relative z-10 text-lg font-semibold text-gray-900 mb-2 transition-colors duration-300 group-hover:text-white">
-                    {feature.title}
-                  </h3>
+  return (
+    <div
+      key={feature.title}
+      className={`group relative overflow-hidden border border-gray-200 rounded-xl p-6 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${feature.hoverBg} hover:text-white text-left`}
+    >
+      {/* Half Circle - Light color, scales on hover */}
+      <div 
+        className={`absolute -top-12 -right-12 w-36 h-36 rounded-full transition-all duration-700 ease-in-out group-hover:scale-150 ${feature.circleColor} group-hover:opacity-20`}
+      ></div>
 
-                  {/* Description */}
-                  <p className="relative z-10 text-gray-500 text-sm leading-relaxed transition-colors duration-300 group-hover:text-white/90">
-                    {feature.description}
-                  </p>
-                </div>
-              );
-            })}
+      {/* Icon - Left aligned */}
+      <div
+        className={`relative z-10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 
+          ${bgClasses[index]}
+          group-hover:bg-white group-hover:scale-110`}
+      >
+        <IconComponent
+          size={22}
+          className={`text-white transition-colors duration-300 ${textColorClasses[index]}`}
+        />
+      </div>
+
+      {/* Title */}
+      <h3 className="relative z-10 text-lg font-semibold text-gray-900 mb-2 transition-colors duration-300 group-hover:text-white">
+        {feature.title}
+      </h3>
+
+      {/* Description */}
+      <p className="relative z-10 text-gray-500 text-sm leading-relaxed transition-colors duration-300 group-hover:text-white/90">
+        {feature.description}
+      </p>
+    </div>
+  );
+})}
 
             {/* Mobile Image - Visible only on mobile, after all cards */}
             <div className="lg:hidden mt-6">

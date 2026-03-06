@@ -313,7 +313,7 @@
 
 "use client";
 
-import { ArrowRight, Calendar, Zap, Award, BarChart2, QrCode } from "lucide-react";
+import { ArrowRight, Calendar, Zap, Award, BarChart2, QrCode ,PencilRuler,LandPlot,ChartPie} from "lucide-react";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -332,7 +332,7 @@ const CARDS = [
     {
         title: "Project Management",
         description: "Learn how to plan, manage, and deliver projects more clearly and confidently.",
-        icon: Zap,
+        icon: PencilRuler,
         iconBg: "bg-green-100",
         iconHover: "group-hover:bg-green-500",
         iconColor: "text-green-500",
@@ -341,7 +341,7 @@ const CARDS = [
     {
         title: "Leadership",
         description: "Build skills to lead people, and handle real challenges at work.",
-        icon: Award,
+        icon: LandPlot,
         iconBg: "bg-purple-100",
         iconHover: "group-hover:bg-purple-500",
         iconColor: "text-purple-500",
@@ -359,7 +359,7 @@ const CARDS = [
     {
         title: "Business Analysis",
         description: "Get guided support to prepare for industry-recognized certifications.",
-        icon: BarChart2,
+        icon: ChartPie,
         iconBg: "bg-indigo-100",
         iconHover: "group-hover:bg-indigo-500",
         iconColor: "text-indigo-500",
@@ -414,7 +414,7 @@ export default function HeroSection() {
                             <br />Skills For Complex
                             <br />Organizations
                         </h1>
-                        <p className="text-white/60 text-base leading-relaxed mb-10 max-w-md">
+                        <p className="text-white text-base leading-relaxed mb-10 max-w-md">
                             Instructor-led training programs designed to develop key capabilities for enterprise and government organizations.
                         </p>
                         <div className="flex flex-wrap gap-4 mb-16">
@@ -439,7 +439,7 @@ export default function HeroSection() {
                             </div>
                             <div>
                                 <p className="text-white font-semibold text-sm">Expert-led learning</p>
-                                <p className="text-white/50 text-xs">Programs shaped by practical experience.</p>
+                                <p className=" text-xs">Programs shaped by practical experience.</p>
                             </div>
                         </div>
                     </div>
