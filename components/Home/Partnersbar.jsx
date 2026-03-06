@@ -12,7 +12,7 @@ export default function PartnersBar() {
     },
     { 
       name: "two", 
-      logo: "/images/logos/Mask group-2.png",
+      logo: "/images/logos/92eb25dcb6f3e671929216ae4841f3cb6f6c5784.png",
       width: 180,
       height: 60,
     },
