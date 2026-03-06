@@ -12,7 +12,7 @@ export default function PartnersBar() {
     },
     { 
       name: "two", 
-      logo: "/images/logos/92eb25dcb6f3e671929216ae4841f3cb6f6c5784.png",
+      logo: "/images/logos/weg.png",
       width: 180,
       height: 60,
     },
