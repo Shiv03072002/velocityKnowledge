@@ -5,38 +5,38 @@ import Image from "next/image";
 export default function PartnersBar() {
   const partners = [
     { 
-      name: "Hygiemeans", 
+      name: "one", 
       logo: "/images/logos/Clip path group.png",
       width: 180,
       height: 60,
     },
     { 
-      name: "Hygiemeans", 
+      name: "two", 
       logo: "/images/logos/Mask group-2.png",
       width: 180,
       height: 60,
     },
     { 
-      name: "Hygiemeans", 
+      name: "three", 
       logo: "/images/logos/lm-logo 1.png",
       width: 180,
       height: 60,
     },
     { 
-      name: "Hygiemeans", 
+      name: "four", 
       logo: "/images/logos/Masks.png",
       width: 180,
       height: 60,
     },
 
     { 
-      name: "Hygiemeans", 
+      name: "five", 
       logo: "/images/logos/nasa-logo-web-rgb 2.png",
       width: 180,
       height: 60,
     },
     { 
-      name: "Hygiemeans", 
+      name: "six", 
       logo: "/images/logos/army_logo_horiz 2.png",
       width: 180,
       height: 60,
