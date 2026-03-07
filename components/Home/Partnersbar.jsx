@@ -11,12 +11,6 @@ export default function PartnersBar() {
       height: 40,
     },
     { 
-      name: "two", 
-      logo: "/images/logos/weg.png",
-      width: 110,
-      height: 40,
-    },
-    { 
       name: "three", 
       logo: "/images/logos/lm-logo 1.png",
       width: 180,
@@ -32,7 +26,7 @@ export default function PartnersBar() {
     { 
       name: "five", 
       logo: "/images/logos/nasa-logo-web-rgb 2.png",
-      width: 110,
+      width: 94,
       height: 40,
     },
     { 
