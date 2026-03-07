@@ -399,7 +399,7 @@ export default function HeroSection() {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 py-8 flex flex-row items-center gap-10 w-full">
                     <div className="w-[40%] text-white">
-                        <div className="inline-flex items-center gap-2 border border-white/30 rounded-full px-4 py-1.5 text-sm text-[#16A34A] mb-8 backdrop-blur-sm bg-[#ECFDF3]">
+                        <div className="inline-flex items-center gap-2 border border-white/30 rounded-full px-4 py-1.5 text-[12px] text-[#16A34A] mb-8 backdrop-blur-sm bg-[#ECFDF3]">
                             <span className="w-1 h-1 rounded-full bg-[#16A34A] inline-block" />
                             Learn
                             <span className="w-1 h-1 rounded-full bg-[#16A34A] inline-block" />
@@ -469,7 +469,7 @@ export default function HeroSection() {
                     </div>
 
                     <div className="relative z-10 px-2 pt-16 pb-14 text-white text-center font-semibold">
-                        <div className="inline-flex items-center gap-2 border border-white/30 rounded-full px-4 py-2 text-sm text-[#16A34A] mb-8 backdrop-blur-sm bg-[#ECFDF3] mx-auto">
+                        <div className="inline-flex items-center gap-2 border border-white/30 rounded-full px-4 py-2 text-[12px] text-[#16A34A] mb-8 backdrop-blur-sm bg-[#ECFDF3] mx-auto">
                             <span className="w-1 h-1 rounded-full bg-[#16A34A] inline-block" />
                             Learn
                             <span className="w-1 h-1 rounded-full bg-[#16A34A] inline-block" />

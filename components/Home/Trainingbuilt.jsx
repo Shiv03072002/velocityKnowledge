@@ -76,7 +76,7 @@ export default function TrainingBuilt() {
               Training built for real problems
             </h2>
 
-            <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-sm">
+            <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-lg">
               Most training content is generic. We focus on practical
               scenarios drawn from real work challenges and deliver
               outcomes your team can immediately apply.
