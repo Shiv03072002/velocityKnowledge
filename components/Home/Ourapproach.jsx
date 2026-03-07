@@ -30,8 +30,22 @@ const STEPS = [
 
 export default function OurApproach() {
   return (
-    <section className="bg-[#F8FAFC] py-20">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="bg-[#F8FAFC] py-20 relative">
+
+     <div
+  className="absolute inset-0 pointer-events-none z-0  hidden md:block"
+  style={{
+    backgroundImage: `
+      linear-gradient(to right, #F1F5F9 1px, transparent 1px),
+      linear-gradient(to bottom, #F1F5F9 1px, transparent 1px)
+    `,
+    backgroundSize: "40px 40px",
+    maskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 70%)",
+    WebkitMaskImage:
+      "linear-gradient(to bottom, black 0%, black 50%, transparent 70%)",
+  }}
+/>
+      <div className="max-w-7xl mx-auto px-6 text-center z-10 relative">
 
         <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center justify-center gap-2">
           <span className="w-2 h-2 bg-[#1E6FD9] inline-block"></span>
