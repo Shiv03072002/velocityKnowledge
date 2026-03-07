@@ -486,7 +486,7 @@ export default function HeroSection() {
                             <br />Organizations
                         </h1>
 
-                        <p className="text-white/70 text-base leading-relaxed mb-10 max-w-sm mx-auto">
+                        <p className="text-white text-base leading-relaxed mb-10 max-w-sm mx-auto">
                             Instructor-led training programs designed to develop key capabilities for enterprise and government organizations.
                         </p>
 
@@ -513,7 +513,7 @@ export default function HeroSection() {
                             </div>
                             <div className="text-left">
                                 <p className="text-white font-semibold text-sm">Expert-led learning</p>
-                                <p className="text-white/50 text-[11px]">Programs shaped by practical experience.</p>
+                                <p className="text-white text-[11px]">Programs shaped by practical experience.</p>
                             </div>
                         </div>
                     </div>
@@ -524,8 +524,8 @@ export default function HeroSection() {
     <div className="pl-6">
         <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            slidesPerView={1.15}
-            spaceBetween={16}
+            slidesPerView={1.2}
+            spaceBetween={8}
             loop={true}
             centeredSlides={false}
         >
