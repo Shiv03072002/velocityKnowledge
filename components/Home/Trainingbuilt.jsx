@@ -83,7 +83,7 @@ export default function TrainingBuilt() {
             </p>
 
             {/* Unsplash Image */}
-            <div className="rounded-2xl overflow-hidden shadow-md">
+            <div className="rounded-2xl overflow-hidden ">
               <img
                 src="/images/training/img.jpg"
                 alt="Training session with professionals in a workshop"
