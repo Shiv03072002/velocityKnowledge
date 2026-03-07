@@ -32,19 +32,19 @@ export default function OurApproach() {
   return (
     <section className="bg-[#F8FAFC] py-20 relative">
 
-     <div
-  className="absolute inset-0 pointer-events-none z-0  hidden md:block"
-  style={{
-    backgroundImage: `
+      <div
+        className="absolute inset-0 pointer-events-none z-0  hidden md:block"
+        style={{
+          backgroundImage: `
       linear-gradient(to right, #F1F5F9 1px, transparent 1px),
       linear-gradient(to bottom, #F1F5F9 1px, transparent 1px)
     `,
-    backgroundSize: "40px 40px",
-    maskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 70%)",
-    WebkitMaskImage:
-      "linear-gradient(to bottom, black 0%, black 50%, transparent 70%)",
-  }}
-/>
+          backgroundSize: "40px 40px",
+          maskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 70%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 0%, black 50%, transparent 70%)",
+        }}
+      />
       <div className="max-w-7xl mx-auto px-6 text-center z-10 relative">
 
         <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center justify-center gap-2">
@@ -54,7 +54,7 @@ export default function OurApproach() {
 
         <h2 className="text-3xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 mb-16 max-w-md mx-auto">
           A simple, structured way to
-          
+
           build skills
         </h2>
 
@@ -64,7 +64,7 @@ export default function OurApproach() {
             return (
               <div key={step.num}>
                 <div className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 text-center  h-full flex flex-col">
-                  
+
                   {/* Top Section */}
                   <div className="p-6">
                     <div className="w-14 h-14 mx-auto  mb-6 rounded-xl border border-gray-200 flex items-center justify-center text-xl font-semibold">

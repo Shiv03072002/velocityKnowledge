@@ -58,10 +58,10 @@ export default function ProgramsSection() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -73,8 +73,8 @@ export default function ProgramsSection() {
     }
   }, [isMobile]);
 
-  const filteredCourses = activeTab === "All" 
-    ? COURSES 
+  const filteredCourses = activeTab === "All"
+    ? COURSES
     : COURSES.filter(course => course.tag === activeTab);
 
   const visibleCourses = filteredCourses.slice(0, visibleCount);
@@ -87,71 +87,69 @@ export default function ProgramsSection() {
   return (
     <section className="bg-[#F8FAFC] py-24">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Small Label */}
         <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center lg:justify-start">
-  <span className="w-2 h-2 bg-[#1E6FD9]"></span>
-  WHAT WE BUILD
-</p>
+          <span className="w-2 h-2 bg-[#1E6FD9]"></span>
+          WHAT WE BUILD
+        </p>
 
-{/* Heading + Tabs Row - Original LG layout */}
-<div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
-  
-  {/* Heading */}
-  <div className="text-center lg:text-left">
-    <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 max-w-2xl leading-tight mx-auto lg:mx-0">
-      Programs designed for real situations
-    </h2>
-    <p className="text-gray-500 text-base mt-4 max-w-xl mx-auto lg:mx-0">
-      These are examples of programs we run. They are guided,
-      practical, and shaped around how people actually work.
-    </p>
-  </div>
+        {/* Heading + Tabs Row - Original LG layout */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+
+          {/* Heading */}
+          <div className="text-center lg:text-left">
+            <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 max-w-2xl leading-tight mx-auto lg:mx-0">
+              Programs designed for real situations
+            </h2>
+            <p className="text-gray-500 text-base mt-4 max-w-xl mx-auto lg:mx-0">
+              These are examples of programs we run. They are guided,
+              practical, and shaped around how people actually work.
+            </p>
+          </div>
 
           {/* Tabs - Different for mobile vs desktop */}
-          
-         {!isMobile ? (
-  // Desktop tabs - Original, right-aligned
-  <div className="bg-gray-100 p-3 rounded-sm flex gap-1">
-    {TABS.map((tab) => (
-      <button
-        key={tab}
-        onClick={() => {
-          setActiveTab(tab);
-        }}
-        className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 ${
-          activeTab === tab
-            ? "bg-white text-gray-900"
-            : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
-        }`}
-      >
-        {tab}
-      </button>
-    ))}
-  </div>
-) : (
-  // Mobile tabs - Scrollable
-  <div className="w-full overflow-x-auto pb-2 -mx-6 px-6 scrollbar-hide lg:hidden">
-    <div className="bg-gray-100 p-3 rounded-sm flex gap-1 min-w-max">
-      {TABS.map((tab) => (
-        <button
-          key={tab}
-          onClick={() => {
-            setActiveTab(tab);
-            setVisibleCount(3);
-          }}
-          className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 whitespace-nowrap ${
-            activeTab === tab
-              ? "bg-white text-gray-900"
-              : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
-          }`}
-        >
-          {tab}
-        </button>
-      ))}
-    </div>
-  </div>
-)}
+
+          {!isMobile ? (
+            // Desktop tabs - Original, right-aligned
+            <div className="bg-gray-100 p-3 rounded-sm flex gap-1">
+              {TABS.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    setActiveTab(tab);
+                  }}
+                  className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 ${activeTab === tab
+                      ? "bg-white text-gray-900"
+                      : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
+                    }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          ) : (
+            // Mobile tabs - Scrollable
+            <div className="w-full overflow-x-auto pb-2 -mx-6 px-6 scrollbar-hide lg:hidden">
+              <div className="bg-gray-100 p-3 rounded-sm flex gap-1 min-w-max">
+                {TABS.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => {
+                      setActiveTab(tab);
+                      setVisibleCount(3);
+                    }}
+                    className={`px-6 py-1 text-sm font-medium rounded-sm transition-all duration-200 whitespace-nowrap ${activeTab === tab
+                        ? "bg-white text-gray-900"
+                        : "text-gray-600 hover:bg-white/70 hover:text-gray-900"
+                      }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Cards Grid */}
