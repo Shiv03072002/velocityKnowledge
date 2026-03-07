@@ -55,7 +55,7 @@ export default function InsightsSection() {
                 Helpful insights for learning and growth
               </h2>
 
-              <p className="text-gray-500 text-base mb-10 max-w-md mx-auto lg:mx-0">
+              <p className="text-gray-500 text-base mb-10 max-w-lg mx-auto lg:mx-0">
                 We share easy-to-read articles, tips, and updates to help you
                 learn about AI and technology in a simple and practical way.
               </p>
