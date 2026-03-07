@@ -13,26 +13,26 @@ export default function PartnersBar() {
     { 
       name: "two", 
       logo: "/images/logos/weg.png",
-      width: 130,
+      width: 110,
       height: 40,
     },
     { 
       name: "three", 
       logo: "/images/logos/lm-logo 1.png",
-      width: 130,
+      width: 180,
       height: 40,
     },
     { 
       name: "four", 
       logo: "/images/logos/Masks.png",
-      width: 130,
+      width: 140,
       height: 40,
     },
 
     { 
       name: "five", 
       logo: "/images/logos/nasa-logo-web-rgb 2.png",
-      width: 130,
+      width: 110,
       height: 40,
     },
     { 
