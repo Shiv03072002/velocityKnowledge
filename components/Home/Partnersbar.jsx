@@ -7,39 +7,39 @@ export default function PartnersBar() {
     { 
       name: "one", 
       logo: "/images/logos/Clip path group.png",
-      width: 180,
-      height: 60,
+      width: 120,
+      height: 40,
     },
     { 
       name: "two", 
       logo: "/images/logos/weg.png",
-      width: 180,
-      height: 60,
+      width: 120,
+      height: 40,
     },
     { 
       name: "three", 
       logo: "/images/logos/lm-logo 1.png",
-      width: 180,
-      height: 60,
+      width: 120,
+      height: 40,
     },
     { 
       name: "four", 
       logo: "/images/logos/Masks.png",
-      width: 180,
-      height: 60,
+      width: 120,
+      height: 40,
     },
 
     { 
       name: "five", 
       logo: "/images/logos/nasa-logo-web-rgb 2.png",
-      width: 180,
-      height: 60,
+      width: 120,
+      height: 40,
     },
     { 
       name: "six", 
       logo: "/images/logos/army_logo_horiz 2.png",
-      width: 180,
-      height: 60,
+      width: 120,
+      height: 40,
     },
     
   ];
