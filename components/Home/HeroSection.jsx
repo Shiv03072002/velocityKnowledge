@@ -391,7 +391,7 @@ export default function HeroSection() {
                         loop
                         muted
                         playsInline
-                        className="w-full h-full object-cover opacity-30"
+                        className="w-full h-full object-cover"
                     >
                         <source src="/images/hero/Velocity Knowledge.mp4" type="video/mp4" />
                     </video>
@@ -469,8 +469,7 @@ export default function HeroSection() {
                         >
                             <source src="/images/hero/Velocity Knowledge.mp4" type="video/mp4" />
                         </video>
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
-                        <div className="absolute top-1/4 left-0 w-64 h-64 bg-purple-700 rounded-full opacity-20 blur-3xl" />
+                        
                     </div>
 
                     <div className="relative z-10 px-2 pt-16 pb-14 text-white text-center font-semibold">

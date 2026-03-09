@@ -13,7 +13,7 @@ export default function ContactSection() {
 
   return (
     <div className="bg-gray-50 py-16">
-      <section className="relative w-full max-w-7xl mx-auto overflow-hidden py-10 px-6 lg:px-16 min-h-screen flex items-center"
+      <section className="relative w-full max-w-7xl mx-auto overflow-hidden px-6 py-16 lg:px-16  flex items-center"
         style={{
           backgroundImage: "url('/images/cta/bg.jpg')",
           backgroundSize: "cover",
@@ -39,13 +39,13 @@ export default function ContactSection() {
     Let's build skills that matter
   </h2>
 
-  <p className="text-white/60 text-base leading-relaxed max-w-md mx-auto lg:mx-0">
+  <p className="text-white text-base leading-relaxed max-w-md mx-auto lg:mx-0">
     Contact us to find practical ways to build and maintain workforce skills.
   </p>
 </div>
 
           {/* Right: Form card - 50% */}
-          <div className="lg:w-1/2 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:p-8">
+          <div className="lg:w-1/2 bg-[#E2E8F033] backdrop-blur-md border border-white/10 rounded-xl p-4 md:p-8">
             <h3 className="text-white text-xl font-semibold mb-6">Send us a message</h3>
 
             <div className="flex flex-col gap-4">
@@ -134,7 +134,7 @@ export default function ContactSection() {
                     </svg>
                   )}
                 </div>
-                <span className="text-sm text-white/70 leading-snug">
+                <span className="text-sm text-white leading-snug">
                   I agree to the{" "}
                   <a href="#" className="text-white font-semibold hover:underline">Privacy Policy</a>
                   {" "}and consent to Velocity Knowledge processing my data
