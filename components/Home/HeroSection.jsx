@@ -313,7 +313,7 @@
 
 "use client";
 
-import { ArrowRight, Calendar, Zap, Award, BarChart2, QrCode ,PencilRuler,LandPlot,ChartPie} from "lucide-react";
+import { ArrowRight, Calendar, Zap, Award, BarChart2, QrCode, PencilRuler, LandPlot, ChartPie } from "lucide-react";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -386,15 +386,16 @@ export default function HeroSection() {
       ═══════════════════════════════════════════════════════ */}
             <section className="hidden lg:flex relative min-h-screen bg-black overflow-hidden items-center">
                 <div className="absolute inset-0 z-0">
-                    <img
-                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80"
-                        alt=""
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                         className="w-full h-full object-cover opacity-30"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-700 rounded-full opacity-20 blur-3xl" />
-                    <div className="absolute bottom-1/3 left-1/3 w-72 h-72 bg-purple-900 rounded-full opacity-30 blur-2xl" />
-                    <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-violet-800 rounded-full opacity-15 blur-3xl" />
+                    >
+                        <source src="/images/hero/Velocity Knowledge.mp4" type="video/mp4" />
+                    </video>
+
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 py-8 flex flex-row items-center gap-10 w-full">
@@ -459,11 +460,15 @@ export default function HeroSection() {
                 {/* BLOCK 1: Image bg — only behind the text/content */}
                 <div className="relative overflow-hidden">
                     <div className="absolute inset-0 z-0">
-                        <img
-                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
-                            alt=""
-                            className="w-full h-full object-cover opacity-40"
-                        />
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover "
+                        >
+                            <source src="/images/hero/Velocity Knowledge.mp4" type="video/mp4" />
+                        </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
                         <div className="absolute top-1/4 left-0 w-64 h-64 bg-purple-700 rounded-full opacity-20 blur-3xl" />
                     </div>
@@ -521,28 +526,28 @@ export default function HeroSection() {
 
                 {/* BLOCK 2: Cards on plain white bg — overflow-hidden clips the peeking slide */}
                 <div className="bg-white py-10 overflow-hidden">
-    <div className="pl-6">
-        <Swiper
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
-            slidesPerView={1.2}
-            spaceBetween={8}
-            loop={true}
-            centeredSlides={false}
-        >
-            {CARDS.map((card, index) => (
-                <SwiperSlide key={card.title}>
-                    {({ isActive }) => (
-                        <CardItem 
-                            card={card} 
-                            isMobile 
-                            isActive={isActive}
-                        />
-                    )}
-                </SwiperSlide>
-            ))}
-        </Swiper>
-    </div>
-</div>
+                    <div className="pl-6">
+                        <Swiper
+                            onSwiper={(swiper) => (swiperRef.current = swiper)}
+                            slidesPerView={1.2}
+                            spaceBetween={8}
+                            loop={true}
+                            centeredSlides={false}
+                        >
+                            {CARDS.map((card, index) => (
+                                <SwiperSlide key={card.title}>
+                                    {({ isActive }) => (
+                                        <CardItem
+                                            card={card}
+                                            isMobile
+                                            isActive={isActive}
+                                        />
+                                    )}
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
             </div>
         </>
     );
@@ -618,14 +623,14 @@ function CardItem({ card, isMobile = false, isActive = false }) {
                 {isMobile && (
                     <div className="mt-4">
                         <p className={`${isFirst
-                                ? "text-black"
-                                : "text-gray-900"
+                            ? "text-black"
+                            : "text-gray-900"
                             } text-sm leading-relaxed`}>
                             {card.description}
                         </p>
                         <span className={`${isFirst
-                                ? "text-blue-500"
-                                : "text-[#1E6FD9]"
+                            ? "text-blue-500"
+                            : "text-[#1E6FD9]"
                             } text-sm font-semibold flex items-center gap-1 mt-3`}>
                             View Courses <ArrowRight size={14} />
                         </span>
