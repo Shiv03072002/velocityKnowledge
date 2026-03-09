@@ -331,7 +331,7 @@ const CARDS = [
     },
     {
         title: "Project Management",
-        description: "Learn how to plan, manage, and deliver projects more clearly and confidently.",
+        description: "Plan, manage, and deliver projects with confidence.",
         icon: PencilRuler,
         iconBg: "bg-green-100",
         iconHover: "group-hover:bg-green-500",
