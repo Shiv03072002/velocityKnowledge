@@ -7,7 +7,7 @@ const filters = {
   Format: ["Instructor-Led Virtual", "In-Person", "Custom"],
 };
 
-function FilterGroup({ title, options, selected, onChange }) {
+function FilterGroup({ title, options, selected, onToggle }) {
   return (
     <div className="mb-7">
       <h3 className="text-md font-semibold text-gray-900 mb-3">{title}</h3>
@@ -15,11 +15,11 @@ function FilterGroup({ title, options, selected, onChange }) {
         {options.map((opt) => (
           <label key={opt} className="flex items-center gap-2.5 cursor-pointer group">
             <div
-              onClick={() => onChange(opt)}
+              onClick={() => onToggle(opt)}
               className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-all ${
                 selected.includes(opt)
-                  ? "bg-blue-600 border-blue-600"
-                  : "border-gray-300 bg-white group-hover:border-blue-400"
+                  ? "bg-[#1E6FD9] border-[#1E6FD9]"
+                  : "border-gray-300 bg-white group-hover:border-[#1E6FD9]"
               }`}
             >
               {selected.includes(opt) && (
@@ -36,7 +36,7 @@ function FilterGroup({ title, options, selected, onChange }) {
   );
 }
 
-export default function FilterSidebar({ onChange }) {
+export default function FilterSidebar() {  // Removed onChange prop
   const [selected, setSelected] = useState({
     Topic: [],
     Categories: [],
@@ -49,9 +49,7 @@ export default function FilterSidebar({ onChange }) {
       const next = current.includes(value)
         ? current.filter((v) => v !== value)
         : [...current, value];
-      const updated = { ...prev, [group]: next };
-      onChange?.(updated);
-      return updated;
+      return { ...prev, [group]: next };  // Removed onChange call
     });
   };
 
@@ -63,7 +61,7 @@ export default function FilterSidebar({ onChange }) {
           title={group}
           options={options}
           selected={selected[group]}
-          onChange={(val) => toggle(group, val)}
+          onToggle={(val) => toggle(group, val)}  // Changed from onChange to onToggle
         />
       ))}
     </aside>

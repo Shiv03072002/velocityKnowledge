@@ -17,7 +17,7 @@ export default function Training() {
           <ProgramsList />
         </div>
       </div>
-      <PublicTrainingSchedule/>
+      
       <Cta />
     
     </section>
