@@ -15,27 +15,27 @@ function CourseHero() {
     <div
       className="relative overflow-hidden"
       style={{
-        minHeight: "420px",
+       
         backgroundImage: "url('/images/cta/bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="relative max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-[3fr_2fr] gap-10 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 s py-16 grid lg:grid-cols-[3fr_2fr] gap-10 items-center">
         {/* LEFT - 60% */}
         <div className="lg:pr-8">
-          <span className="inline-block border border-white/30 text-white/80 text-[11px] font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">
+          <span className="inline-block border bg-white border-white/30 text-[#1E6FD9] text-[11px] font-semibold  uppercase px-4 py-1.5 rounded-full mb-6">
             Leadership Development
           </span>
 
           <h1
-            className="text-white text-4xl lg:text-5xl font-bold leading-tight mb-6 max-w-2xl"
-            style={{ fontFamily: "'Georgia', serif" }}
+            className="text-white text-4xl lg:text-5xl font-normal tracking-wide leading-tight mb-6 max-w-2xl [font-family:var(--font-dm-serif)]"
+            
           >
             Build trust and high performance with flexible team leadership
           </h1>
 
-          <p className="text-white/80 text-base leading-relaxed max-w-xl mb-10">
+          <p className="text-[#94A3B8] text-base leading-relaxed max-w-xl mb-10">
             This course helps leaders build trust and improve team performance. You will
             learn how teams develop, how trust is built, and how to adjust your leadership
             style to support different team members.
@@ -68,25 +68,25 @@ function CourseHero() {
             className="rounded-xl p-6 bg-[#E2E8F033]"
             
           >
-            <h3 className="text-white font-semibold text-base mb-5">Course Details</h3>
+            <h3 className="text-white font-semibold text-xl mb-2">Course Details</h3>
 
             <div className="divide-y divide-white/15">
               {courseDetails.map(({ label, value }) => (
                 <div key={label} className="flex items-center justify-between py-3.5">
-                  <span className="text-white/70 text-sm">{label}</span>
-                  <span className="text-white font-semibold text-sm">{value}</span>
+                  <span className="text-white/70 font-medium text-sm">{label}</span>
+                  <span className="text-white font-semibold text-md">{value}</span>
                 </div>
               ))}
             </div>
 
-            <button className="mt-6 w-full bg-[#1E6FD9] hover:bg-blue-500 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+            <button className="mt-6 w-full bg-[#1E6FD9] hover:bg-blue-500 text-white text-sm font-semibold px-5 py-3 rounded-md transition-colors flex items-center justify-center gap-2">
               Talk to Our Experts
               <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
 
-            <p className="text-center text-white/40 text-xs mt-3 leading-relaxed italic max-w-70 mx-auto">
+            <p className="text-center text-white/40 text-md mt-3 leading-relaxed italic max-w-90 mx-auto">
               This program will be customized based on your specific requirements.
             </p>
           </div>

@@ -19,7 +19,7 @@ export default function Training() {
       </div>
       <PublicTrainingSchedule/>
       <Cta />
-      <ContactInfoSection />
+    
     </section>
   );
 }

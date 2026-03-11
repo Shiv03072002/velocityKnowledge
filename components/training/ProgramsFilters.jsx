@@ -10,7 +10,7 @@ const filters = {
 function FilterGroup({ title, options, selected, onChange }) {
   return (
     <div className="mb-7">
-      <h3 className="text-sm font-semibold text-gray-900 mb-3">{title}</h3>
+      <h3 className="text-md font-semibold text-gray-900 mb-3">{title}</h3>
       <div className="flex flex-col gap-2.5">
         {options.map((opt) => (
           <label key={opt} className="flex items-center gap-2.5 cursor-pointer group">
@@ -28,7 +28,7 @@ function FilterGroup({ title, options, selected, onChange }) {
                 </svg>
               )}
             </div>
-            <span className="text-sm text-gray-600">{opt}</span>
+            <span className="text-md text-gray-600">{opt}</span>
           </label>
         ))}
       </div>

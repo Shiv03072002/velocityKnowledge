@@ -1,13 +1,13 @@
 import { Check, ArrowRight } from "lucide-react";
 
 function CheckIcon() {
-  return <Check className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />;
+  return <Check className="w-4 h-4 text-[#1E6FD9] flex-shrink-0 mt-0.5" />;
 }
 
 function SectionLabel({ text }) {
   return (
-    <p className="text-blue-700 text-xs font-semibold tracking-widest uppercase flex items-center gap-2 mb-3">
-      <span className="w-2 h-2 rounded-full bg-blue-700 inline-block" />
+    <p className="text-gray-600 text-xs font-semibold tracking-widest uppercase flex items-center gap-2 mb-3">
+      <span className="w-2 h-2  bg-[#1E6FD9] inline-block" />
       {text}
     </p>
   );
@@ -17,9 +17,16 @@ function CheckGrid({ items }) {
   return (
     <div className="grid sm:grid-cols-2 gap-x-10 gap-y-3 mt-5">
       {items.map((item, i) => (
-        <div key={i} className="flex items-start gap-2.5">
-          <CheckIcon />
-          <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
+        <div key={i} className="flex items-start gap-3">
+          
+          <span className="flex items-center justify-center w-7 h-7 bg-[#EAF2FD] rounded-full flex-shrink-0">
+            <CheckIcon />
+          </span>
+
+          <span className="text-sm text-gray-600 leading-relaxed">
+            {item}
+          </span>
+
         </div>
       ))}
     </div>
@@ -51,15 +58,13 @@ const coreSkills = [
 export default function CourseOverview() {
   return (
     <section className="bg-[#f8fafc] px-6 py-14">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] gap-10 items-start">
-
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] gap-10 md:gap-20 items-start">
         {/* LEFT (60%) */}
         <div>
           <SectionLabel text="Course Overview" />
 
           <h2
-            className="text-3xl font-semibold text-gray-900 mb-5"
-            style={{ fontFamily: "'Georgia', serif" }}
+            className="text-3xl font-normal text-gray-900 mb-5 [font-family:var(--font-dm-serif)]"
           >
             About this course
           </h2>
@@ -72,7 +77,7 @@ export default function CourseOverview() {
               "By the end of the course, you will know how to adjust your leadership style, communicate better with your team, and help your team achieve stronger results.",
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 leading-relaxed">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
+                <span className="mt-2 w-1 h-1 rounded-full bg-gray-900 flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -83,8 +88,7 @@ export default function CourseOverview() {
             <SectionLabel text="Learning Outcomes" />
 
             <h2
-              className="text-3xl font-semibold text-gray-900 mb-2"
-              style={{ fontFamily: "'Georgia', serif" }}
+              className="text-3xl font-normal text-gray-900 mb-2 [font-family:var(--font-dm-serif)]"
             >
               What you will learn
             </h2>
@@ -101,8 +105,7 @@ export default function CourseOverview() {
             <SectionLabel text="Core Skills" />
 
             <h2
-              className="text-3xl font-semibold text-gray-900 mb-2"
-              style={{ fontFamily: "'Georgia', serif" }}
+              className="text-3xl font-normal text-gray-900 mb-2 [font-family:var(--font-dm-serif)]"
             >
               Skills you will develop
             </h2>
@@ -121,7 +124,7 @@ export default function CourseOverview() {
               Please contact us to discuss format and availability.
             </p>
 
-            <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gray-100 transition">
+            <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gray-100 transition whitespace-nowrap">
               Contact Us
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -129,32 +132,31 @@ export default function CourseOverview() {
         </div>
 
         {/* RIGHT (40%) */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm sticky top-6">
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-gray-900 font-semibold text-base mb-5">
+              Course Details
+            </h3>
 
-          <h3 className="text-gray-900 font-semibold text-base mb-5">
-            Course Details
-          </h3>
+            <div className="divide-y divide-gray-100">
+              {courseDetails.map(({ label, value }) => (
+                <div key={label} className="flex items-center justify-between py-3.5">
+                  <span className="text-sm text-gray-600">{label}</span>
+                  <span className="text-sm font-bold text-gray-900">{value}</span>
+                </div>
+              ))}
+            </div>
 
-          <div className="divide-y divide-gray-100">
-            {courseDetails.map(({ label, value }) => (
-              <div key={label} className="flex items-center justify-between py-3.5">
-                <span className="text-sm text-gray-500">{label}</span>
-                <span className="text-sm font-medium text-gray-900">{value}</span>
-              </div>
-            ))}
+            <button className="mt-6 w-full bg-[#1E6FD9] hover:bg-[#1E6FD9]/90 text-white text-sm font-semibold px-5 py-3 rounded-xl transition flex items-center justify-center gap-2">
+              Talk to Our Experts
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <p className="text-center text-xs text-gray-600 mt-3 leading-relaxed max-w-70 mx-auto italic">
+              This program will be customized based on your specific requirements.
+            </p>
           </div>
-
-          <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-3 rounded-xl transition flex items-center justify-center gap-2">
-            Talk to Our Experts
-            <ArrowRight className="w-4 h-4" />
-          </button>
-
-          <p className="text-center text-xs text-gray-400 mt-3 leading-relaxed">
-            This program will be customized based on your specific requirements.
-          </p>
-
         </div>
-
       </div>
     </section>
   );
