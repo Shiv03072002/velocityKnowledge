@@ -44,15 +44,16 @@ export default function WhoWeHelp() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-16">
-          <div className="max-w-2xl text-center lg:text-left">
-            <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center lg:justify-start">
-              <span className="w-2 h-2 bg-[#1E6FD9]"></span>
-              WHO WE HELP
-            </p>
-            <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 leading-tight">
-              Training for Different Types of Organizations
-            </h2>
-          </div>
+         <div className="max-w-2xl mx-auto text-center lg:mx-0 lg:text-left">
+  <p className="text-gray-500 text-xs uppercase tracking-widest font-semibold mb-4 flex items-center gap-2 justify-center lg:justify-start">
+    <span className="w-2 h-2 bg-[#1E6FD9]"></span>
+    WHO WE HELP
+  </p>
+
+  <h2 className="text-4xl md:text-5xl font-normal [font-family:var(--font-dm-serif)] text-gray-900 leading-tight">
+    Training for Different Types of Organizations
+  </h2>
+</div>
           <p className="text-gray-500 text-base max-w-md mx-auto lg:mx-0 lg:text-left text-center">
             We create custom training programs for companies,
             large organizations, and government teams.

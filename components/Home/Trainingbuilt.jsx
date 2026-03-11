@@ -87,7 +87,7 @@ export default function TrainingBuilt() {
               <img
                 src="/images/training/img.jpg"
                 alt="Training session with professionals in a workshop"
-                className="object-cover w-full h-[540px]"
+                className="object-cover w-full h-[570px]"
               />
             </div>
           </div>

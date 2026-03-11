@@ -494,7 +494,7 @@ export default function HeroSection() {
                             Instructor-led training programs designed to develop key capabilities for enterprise and government organizations.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 mb-12 w-full">
+                        <div className="flex flex-col  md:flex-row justify-center  gap-4 mb-12 w-full">
                             <button className="flex items-center justify-center gap-2 bg-[#1E6FD9] hover:bg-blue-700 transition-colors text-white font-semibold px-6 py-3 rounded-lg w-full sm:w-auto">
                                 Explore Programs <ArrowRight size={16} />
                             </button>
