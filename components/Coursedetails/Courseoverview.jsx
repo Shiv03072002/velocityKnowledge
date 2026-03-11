@@ -133,7 +133,7 @@ export default function CourseOverview() {
 
         {/* RIGHT (40%) */}
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 ">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 ">
             <h3 className="text-gray-900 font-semibold text-base mb-5">
               Course Details
             </h3>
