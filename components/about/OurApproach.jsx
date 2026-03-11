@@ -41,7 +41,7 @@ export default function OurApproach() {
             </h2>
           </div>
 
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-gray-600 text-sm leading-relaxed mt-0 lg:mt-10">
             Our training follows a clear process designed to help learners
             build practical skills. From understanding learning needs to
             applying new knowledge at work, each step focuses on real results.
