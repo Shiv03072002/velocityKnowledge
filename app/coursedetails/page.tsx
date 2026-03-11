@@ -4,7 +4,9 @@ export default function Coursedetails() {
   return (
     <section className="">
      <Coursedetailheader/>
+     
      <CourseOverview/>
+    
     </section>
   );
 }

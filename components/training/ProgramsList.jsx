@@ -1,6 +1,8 @@
+// components/training/ProgramsList.jsx
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProgramCard from "./ProgramCard";
+import { ChevronDown } from "lucide-react";
 
 const programs = [
   {
@@ -43,42 +45,164 @@ const programs = [
     format: "In-Person",
     popular: false,
   },
+  {
+    id: 5,
+    topic: "Information Technology",
+    title: "IT Fundamentals for Business Professionals",
+    description:
+      "Essential IT concepts for non-technical professionals. Understand systems, networks, and security basics.",
+    duration: "2 Days",
+    format: "Instructor-Led Virtual",
+    popular: false,
+  },
+  {
+    id: 6,
+    topic: "Certifications",
+    title: "PMP Certification Prep Course",
+    description:
+      "Comprehensive preparation for the Project Management Professional (PMP) certification exam.",
+    duration: "4 Days",
+    format: "Instructor-Led",
+    popular: true,
+  },
+  {
+    id: 7,
+    topic: "Leadership",
+    title: "Strategic Leadership for Executives",
+    description:
+      "Advanced leadership strategies for senior leaders to drive organizational change and innovation.",
+    duration: "3 Days",
+    format: "Instructor-Led",
+    popular: false,
+  },
+  {
+    id: 8,
+    topic: "AI Technologies",
+    title: "Machine Learning for Business Leaders",
+    description:
+      "Understand machine learning concepts and how to leverage them for business growth.",
+    duration: "2 Days",
+    format: "Instructor-Led Virtual",
+    popular: false,
+  },
+  {
+    id: 9,
+    topic: "Project Management",
+    title: "Project Risk Management",
+    description:
+      "Learn to identify, assess, and mitigate risks in complex projects.",
+    duration: "2 Days",
+    format: "In-Person",
+    popular: false,
+  },
 ];
 
-export default function ProgramList() {
+const ITEMS_PER_PAGE = 4;
+
+export default function ProgramList({ selectedCategory }) {
   const [sort, setSort] = useState("All");
+  const [open, setOpen] = useState(false);
+  const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE);
+
+  const options = ["All", "Trending", "Popular", "New"];
+  const [filteredPrograms, setFilteredPrograms] = useState(programs);
+
+  // Filter programs when selectedCategory changes
+  useEffect(() => {
+    if (selectedCategory && selectedCategory !== "All Topic") {
+      setFilteredPrograms(
+        programs.filter(p => p.topic === selectedCategory)
+      );
+    } else {
+      setFilteredPrograms(programs);
+    }
+    // Reset display count when category changes
+    setDisplayCount(ITEMS_PER_PAGE);
+  }, [selectedCategory]);
+
+  // Get current programs to display
+  const displayedPrograms = filteredPrograms.slice(0, displayCount);
+  const hasMore = displayCount < filteredPrograms.length;
+
+  const handleLoadMore = () => {
+    setDisplayCount(prev => Math.min(prev + ITEMS_PER_PAGE, filteredPrograms.length));
+  };
 
   return (
     <div className="flex-1 min-w-0">
       {/* Header */}
       <div className="flex items-center justify-between mb-5">
         <p className="text-sm text-gray-600">
-          Showing <span className="font-semibold text-gray-900">20 programs</span>
+          Showing <span className="font-semibold text-gray-900">{displayedPrograms.length}</span> of{" "}
+          <span className="font-semibold text-gray-900">{filteredPrograms.length} programs</span>
         </p>
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Sort by:</span>
+
           <div className="relative">
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              className="appearance-none bg-white border border-gray-200 rounded-xl text-sm text-gray-700 px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-400/30 cursor-pointer"
+            {/* Button */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 px-4 py-2 min-w-[120px] justify-between"
             >
-              <option>All</option>
-              <option>Popular</option>
-              <option>Newest</option>
-              <option>Duration</option>
-            </select>
-            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">▼</span>
+              {sort}
+              <ChevronDown size={16} className="text-gray-400" />
+            </button>
+
+            {/* Dropdown */}
+            {open && (
+              <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
+                {options.map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      setSort(item);
+                      setOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Cards */}
       <div className="flex flex-col gap-4">
-        {programs.map((p) => (
-          <ProgramCard key={p.id} {...p} />
-        ))}
+        {displayedPrograms.length > 0 ? (
+          displayedPrograms.map((p) => (
+            <ProgramCard key={p.id} {...p} />
+          ))
+        ) : (
+          <div className="text-center py-10 text-gray-500">
+            No programs found for this category
+          </div>
+        )}
       </div>
+
+      {/* Load More Button */}
+      {displayedPrograms.length > 0 && hasMore && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleLoadMore}
+            className="px-6 py-3 bg-white border border-gray-300 rounded-md text-gray-700 font-semibold text-sm hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 hover:shadow"
+          >
+            Load More Programs
+          </button>
+        </div>
+      )}
+
+      {/* Optional: Show message when all programs are loaded */}
+      {displayedPrograms.length > 0 && !hasMore && displayedPrograms.length === filteredPrograms.length && filteredPrograms.length > ITEMS_PER_PAGE && (
+        <div className="flex justify-center mt-8">
+          <p className="text-sm text-gray-500">
+            You've viewed all {filteredPrograms.length} programs
+          </p>
+        </div>
+      )}
     </div>
   );
 }

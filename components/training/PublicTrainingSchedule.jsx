@@ -31,7 +31,7 @@ function CalendarIcon() {
 
 export default function PublicTrainingSchedule() {
   return (
-    <section className="bg-white px-4 sm:px-6 py-16 sm:py-20">
+    <section className="bg-[#F8FAFC] px-4 sm:px-6 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}

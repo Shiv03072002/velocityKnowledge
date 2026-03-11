@@ -57,10 +57,10 @@ const coreSkills = [
 
 export default function CourseOverview() {
   return (
-    <section className="bg-[#f8fafc] px-6 py-14">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] gap-10 md:gap-20 items-start">
+    <section className="bg-[#f8fafc]   py-14">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-[3fr_2fr] gap-10 md:gap-30 items-start px-8 lg:px-6 ">
         {/* LEFT (60%) */}
-        <div>
+        <div className="">
           <SectionLabel text="Course Overview" />
 
           <h2
@@ -133,7 +133,7 @@ export default function CourseOverview() {
 
         {/* RIGHT (40%) */}
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 ">
             <h3 className="text-gray-900 font-semibold text-base mb-5">
               Course Details
             </h3>
