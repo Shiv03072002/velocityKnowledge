@@ -35,7 +35,7 @@ export default function WhatWeDo() {
           </div>
 
           {/* Right Feature Boxes - Minimal padding */}
-          <div className="grid sm:grid-cols-2 gap-3 content-start mt-10 ">
+          <div className="grid sm:grid-cols-2 gap-3 content-start mt-0 lg:mt-10 ">
             {features.map((item, i) => (
               <div
                 key={i}

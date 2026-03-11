@@ -5,15 +5,14 @@ import { Search, Brain, Users, BarChart3, Code } from "lucide-react";
 export default function ProgramsHero() {
   return (
     <section
-      className="relative w-full py-16 sm:py-20 text-center text-white overflow-hidden"
+      className="relative w-full py-16 sm:py-20 text-center text-white overflow-hidden  bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/images/cta/bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+          backgroundImage: "url('/images/cta/bg.jpg')",
+
+        }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#020a3b]/80"></div>
+     
 
       {/* Floating Icons - Left Side */}
       <div className="absolute left-8 lg:left-24 top-16 lg:top-28 text-white/30 float-animation hidden sm:block">

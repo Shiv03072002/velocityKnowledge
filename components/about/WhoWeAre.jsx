@@ -52,7 +52,7 @@ export default function WhoWeAre() {
           </div>
 
           {/* Right */}
-          <div className="text-gray-600 text-md leading-relaxed space-y-4 mt-10">
+          <div className="text-gray-600 text-md leading-relaxed space-y-4  mt-0 lg:mt-10">
             <p>
               We are a training organization that helps teams and professionals
               build practical skills for real work. We work with experienced
