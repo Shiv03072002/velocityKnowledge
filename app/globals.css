@@ -21,3 +21,17 @@ h1 {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Add this to your global CSS file or in a style tag */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}

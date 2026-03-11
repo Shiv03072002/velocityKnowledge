@@ -1,21 +1,24 @@
 import ProgramsHeader from "@/components/training/ProgramsHeader";
-import ProgramsFilters from "@/components/training/ProgramsFilters";
+import FilterSidebar from "@/components/training/ProgramsFilters";
 import ProgramsList from "@/components/training/ProgramsList";
 import ContactInfoSection from "@/components/training/ContactInfoSection";
-
+import Categorytabs from "@/components/training/Categorytabs"
+import PublicTrainingSchedule from "@/components/training/PublicTrainingSchedule"
+import Cta from "@/components/Home/Cta";
 export default function Training() {
   return (
-    <section className="py-10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
-        <ProgramsHeader />
+    <section className="bg-white">
+      <ProgramsHeader />
 
+      <div className="max-w-7xl mx-auto px-6 py-10">
+         <Categorytabs/>
         <div className="grid lg:grid-cols-[250px_1fr] gap-12">
-          <ProgramsFilters />
+          <FilterSidebar />
           <ProgramsList />
         </div>
       </div>
-
-      {/* No padding applied here */}
+      <PublicTrainingSchedule/>
+      <Cta />
       <ContactInfoSection />
     </section>
   );

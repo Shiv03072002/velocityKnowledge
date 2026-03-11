@@ -1,57 +1,52 @@
-import { Clock, ArrowRight, QrCode } from "lucide-react";
+export default function ProgramCard({ topic, title, description, duration, format, popular }) {
+  const topicColors = {
+    LEADERSHIP: "bg-blue-50 text-blue-700",
+    "AI TECHNOLOGIES": "bg-purple-50 text-purple-700",
+    "PROJECT MANAGEMENT": "bg-green-50 text-green-700",
+    CERTIFICATIONS: "bg-orange-50 text-orange-700",
+    "BUSINESS ANALYSIS": "bg-teal-50 text-teal-700",
+    "INFORMATION TECHNOLOGY": "bg-indigo-50 text-indigo-700",
+  };
+  const colorClass = topicColors[topic?.toUpperCase()] || "bg-gray-100 text-gray-600";
 
-export default function ProgramCard({ program }) {
   return (
-    <div className="flex items-center gap-6 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition">
-
-      {/* Icon */}
-      <div className="w-16 h-16 rounded-lg bg-[#EAF2FD] flex items-center justify-center shrink-0">
-        <QrCode size={28} className="text-[#1E6FD9]" />
+    <div className="bg-white border border-gray-200 rounded-2xl px-7 py-6 hover:shadow-md transition-shadow duration-200">
+      <div className="flex items-start justify-between mb-3">
+        <span className={`text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full ${colorClass}`}>
+          {topic}
+        </span>
+        {popular && (
+          <span className="text-[11px] font-semibold text-green-600 tracking-wide uppercase">
+            Popular
+          </span>
+        )}
       </div>
 
-      {/* Content */}
-      <div className="flex-1">
+      <h3 className="text-gray-900 text-lg font-semibold mb-2 leading-snug" style={{ fontFamily: "'Georgia', serif" }}>
+        {title}
+      </h3>
+      <p className="text-gray-500 text-sm leading-relaxed mb-5">{description}</p>
 
-        {/* Top Row */}
-        <div className="flex items-center justify-between">
-
-          <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">
-            {program.category}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="flex items-center gap-1.5 text-xs text-gray-500 border border-gray-200 rounded-full px-3 py-1">
+            <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M8 5v3.5l2 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+            {duration}
           </span>
-
-          <span className="text-xs border border-gray-200 text-gray-500 px-3 py-1 rounded-full">
-            INSTRUCTOR-LED
+          <span className="text-xs text-gray-500 border border-gray-200 rounded-full px-3 py-1">
+            {format}
           </span>
-
         </div>
-
-        {/* Title */}
-        <h3 className="text-lg font-semibold text-gray-900 mt-3">
-          {program.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-gray-500 text-sm mt-2 max-w-2xl">
-          {program.description}
-        </p>
-
-        {/* Bottom Row */}
-        <div className="flex items-center justify-between mt-4">
-
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <Clock size={14} />
-            {program.duration}
-          </div>
-
-          <button className="flex items-center gap-2 bg-[#1E6FD9] text-white px-5 py-2.5 rounded-lg  transition">
-            View Details
-            <ArrowRight size={16} />
-          </button>
-
-        </div>
-
+        <button className="flex items-center gap-1.5 bg-white border border-gray-200 hover:border-gray-400 text-gray-800 text-sm font-medium px-4 py-2 rounded-xl transition-all hover:shadow-sm">
+          View Details
+          <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </div>
-
     </div>
   );
 }

@@ -1,119 +1,84 @@
-import ProgramCard from "@/components/training/ProgramCard";
+"use client";
+import { useState } from "react";
+import ProgramCard from "./ProgramCard";
 
 const programs = [
   {
-    category: "Information Technology",
-    title: "Vibe Coding: Your AI-Powered Future",
+    id: 1,
+    topic: "Leadership",
+    title: "Build Trust and High Performance with Flexible Team Leadership",
     description:
-      "This program helps learners understand how AI tools can be used in real development work.",
+      "Learn how to guide teams, improve communication, and make better decisions as a leader. This course helps managers build strong teams.",
+    duration: "1 Day",
+    format: "Instructor-Led",
+    popular: true,
+  },
+  {
+    id: 2,
+    topic: "AI Technologies",
+    title: "AI Foundations for Business",
+    description:
+      "Learn how AI tools can help businesses improve work and make better decisions. This course shows how teams can use AI safely in daily work.",
     duration: "3 days",
+    format: "Instructor-Led",
+    popular: true,
   },
   {
-    category: "Leadership",
-    title: "Managing a Virtual/Distributed Workforce",
+    id: 3,
+    topic: "Project Management",
+    title: "Agile Project Management Essentials",
     description:
-      "Learn techniques for leading remote teams effectively.",
-    duration: "2 days",
+      "Master agile methodologies to deliver projects faster and more efficiently. Learn sprint planning, backlog management, and team collaboration.",
+    duration: "2 Days",
+    format: "Instructor-Led Virtual",
+    popular: false,
   },
   {
-    category: "Information Technology",
-    title: "Modern Web Development with React",
-    description:
-      "Learn how to build scalable web applications using React, modern JavaScript, and best practices.",
-    duration: "4 days",
-  },
-  {
-    category: "Business Analysis",
+    id: 4,
+    topic: "Business Analysis",
     title: "Business Analysis Fundamentals",
     description:
-      "Understand the key responsibilities of a business analyst and learn industry-standard analysis techniques.",
-    duration: "3 days",
-  },
-  {
-    category: "Project Management",
-    title: "Agile Project Management",
-    description:
-      "Master agile frameworks like Scrum and Kanban to deliver projects efficiently.",
-    duration: "2 days",
-  },
-  {
-    category: "Leadership",
-    title: "Effective Leadership for Managers",
-    description:
-      "Develop leadership skills to manage teams, improve decision-making, and drive organizational success.",
-    duration: "3 days",
-  },
-  {
-    category: "Information Technology",
-    title: "Cybersecurity Essentials",
-    description:
-      "Learn the fundamentals of cybersecurity, risk management, and protecting digital systems.",
-    duration: "2 days",
-  },
-  {
-    category: "Certifications",
-    title: "Preparing for PMP Certification",
-    description:
-      "A comprehensive preparation course for professionals planning to take the PMP certification exam.",
-    duration: "5 days",
-  },
-  {
-    category: "Business Analysis",
-    title: "Advanced Requirements Gathering",
-    description:
-      "Improve your ability to collect, document, and validate business requirements effectively.",
-    duration: "2 days",
-  },
-  {
-    category: "Project Management",
-    title: "Risk Management for Projects",
-    description:
-      "Learn how to identify, assess, and mitigate project risks using proven strategies.",
-    duration: "2 days",
+      "Develop skills to analyze business needs and translate them into actionable solutions. Covers requirements gathering and stakeholder management.",
+    duration: "2 Days",
+    format: "In-Person",
+    popular: false,
   },
 ];
-export default function ProgramsList() {
-  return (
-    <div>
 
-      {/* Sort */}
-      <div className="flex justify-end text-sm text-gray-500 pb-4 mb-6 border-b border-gray-200">
-        Sort by:
-        <span className="ml-2 font-medium text-gray-900">Newest</span>
+export default function ProgramList() {
+  const [sort, setSort] = useState("All");
+
+  return (
+    <div className="flex-1 min-w-0">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-5">
+        <p className="text-sm text-gray-600">
+          Showing <span className="font-semibold text-gray-900">20 programs</span>
+        </p>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-500">Sort by:</span>
+          <div className="relative">
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              className="appearance-none bg-white border border-gray-200 rounded-xl text-sm text-gray-700 px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-400/30 cursor-pointer"
+            >
+              <option>All</option>
+              <option>Popular</option>
+              <option>Newest</option>
+              <option>Duration</option>
+            </select>
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">▼</span>
+          </div>
+        </div>
       </div>
 
-      {/* Programs */}
-      <div className="space-y-6">
-        {programs.map((program, i) => (
-          <ProgramCard key={i} program={program} />
+      {/* Cards */}
+      <div className="flex flex-col gap-4">
+        {programs.map((p) => (
+          <ProgramCard key={p.id} {...p} />
         ))}
       </div>
-
-      {/* Pagination */}
-      <div className="flex items-center justify-center gap-3 mt-12 text-sm text-gray-600">
-        <button className="hover:text-black">{`<`}</button>
-
-        <button className="w-9 h-9 flex items-center justify-center rounded-md bg-[#0F172A] text-white">
-          1
-        </button>
-
-        <button className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100">
-          2
-        </button>
-
-        <button className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100">
-          3
-        </button>
-
-        <span className="px-1">...</span>
-
-        <button className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100">
-          10
-        </button>
-
-        <button className="hover:text-black">{`>`}</button>
-      </div>
-
     </div>
   );
 }
