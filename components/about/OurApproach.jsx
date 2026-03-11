@@ -34,7 +34,7 @@ export default function OurApproach() {
             Our approach
             </p>
 
-            <h2 className="text-4xl font-normal text-gray-900 leading-snug [font-family:var(--font-dm-serif)]">
+            <h2 className="text-5xl font-normal text-gray-900 leading-snug [font-family:var(--font-dm-serif)]">
               A Structured Approach
               <br />
               to Building Skills
