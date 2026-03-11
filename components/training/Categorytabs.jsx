@@ -1,4 +1,12 @@
+'use client'
+
 import { Calendar, Wrench, Users, Award, Clock, Cpu } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export default function CategoryFilters() {
   const categories = [
@@ -48,7 +56,8 @@ export default function CategoryFilters() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap justify-center gap-3 md:gap-4 py-4">
+      {/* Desktop View - Grid */}
+      <div className="hidden md:flex flex-wrap justify-center gap-3 md:gap-4 py-4">
         {categories.map((cat, index) => (
           <button
             key={index}
@@ -70,6 +79,68 @@ export default function CategoryFilters() {
             <span className="text-sm font-semibold tracking-wide">{cat.name}</span>
           </button>
         ))}
+      </div>
+
+      {/* Mobile Slider with Swiper */}
+      <div className="md:hidden relative py-4">
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={8}
+          slidesPerView="auto"
+          navigation={{
+            prevEl: '.custom-swiper-prev',
+            nextEl: '.custom-swiper-next',
+          }}
+          className="!px-8"
+        >
+          {categories.map((cat, index) => (
+            <SwiperSlide key={index} className="!w-auto">
+              <button
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-all duration-200 ${
+                  cat.active
+                    ? `${cat.activeColor} text-white border-transparent shadow-lg`
+                    : "bg-white text-gray-700 border-gray-200 hover:border-gray-300"
+                }`}
+              >
+                <span
+                  className={`w-7 h-7 rounded-md flex items-center justify-center ${
+                    cat.active
+                      ? "bg-white/20 text-white"
+                      : cat.iconBg
+                  }`}
+                >
+                  {cat.icon}
+                </span>
+                <span className="text-xs font-semibold whitespace-nowrap">{cat.name}</span>
+              </button>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation Arrows */}
+        <button className="custom-swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1.5 shadow-md border border-gray-200 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          <svg className="w-4 h-4 text-gray-600" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        
+        <button className="custom-swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1.5 shadow-md border border-gray-200 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          <svg className="w-4 h-4 text-gray-600" viewBox="0 0 16 16" fill="none">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center gap-1 mt-3">
+          {categories.map((_, index) => (
+            <div
+              key={index}
+              className={`w-1 h-1 rounded-full transition-all ${
+                index === 0 ? 'w-3 bg-gray-600' : 'bg-gray-300'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
