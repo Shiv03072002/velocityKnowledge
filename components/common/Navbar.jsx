@@ -185,10 +185,10 @@ export default function Navbar() {
 
                     {/* Mobile Menu Footer */}
                     <div className="border-t border-gray-200 p-6">
-                        <p className="text-sm text-gray-500 text-center">
-                            © 2024 Velocity Knowledge. All rights reserved.
-                        </p>
-                    </div>
+  <p className="text-sm text-gray-500 text-center">
+    © {new Date().getFullYear()} Velocity Knowledge. All rights reserved.
+  </p>
+</div>
                 </div>
             </div>
         </>

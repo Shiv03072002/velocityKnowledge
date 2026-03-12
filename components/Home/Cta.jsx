@@ -23,7 +23,7 @@
 //       >
 //         {/* Large decorative circle — bottom left */}
 //         <div className="hidden md:block absolute -bottom-25 -left-18 w-[440px] h-[440px] rounded-full border-[28px] border-white z-0 " />
- 
+
 //         <div className="relative z-10 w-full flex flex-col lg:flex-row gap-12 lg:gap-16">
 //           {/* Left content */}
 //           <div className="lg:w-1/2 text-white text-center lg:text-left">
@@ -160,19 +160,26 @@ import Image from "next/image";
 export default function ContactSection() {
   const [agreed, setAgreed] = useState(false);
   const [form, setForm] = useState({
-    name: "", email: "", phone: "", org: "", role: "", message: ""
+    name: "",
+    email: "",
+    phone: "",
+    org: "",
+    role: "",
+    message: "",
   });
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
     <div className="bg-gray-50 py-16">
-      <section className="relative w-full max-w-7xl mx-auto overflow-hidden px-6 py-16 lg:px-16 flex items-center"
+      <section
+        className="relative w-full max-w-7xl mx-auto overflow-hidden px-6 py-16 lg:px-16 flex items-center"
         style={{
           backgroundImage: "url('/images/cta/bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
+          backgroundRepeat: "no-repeat",
         }}
       >
         {/* Decorative image — bottom left */}
@@ -185,7 +192,7 @@ export default function ContactSection() {
             sizes="440px"
           />
         </div>
- 
+
         <div className="relative z-10 w-full flex flex-col lg:flex-row gap-12 lg:gap-16">
           {/* Left content */}
           <div className="lg:w-1/2 text-white text-center lg:text-left">
@@ -201,13 +208,16 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-white text-base leading-relaxed max-w-md mx-auto lg:mx-0">
-              Contact us to find practical ways to build and maintain workforce skills.
+              Contact us to find practical ways to build and maintain workforce
+              skills.
             </p>
           </div>
 
           {/* Right: Form card - 50% */}
           <div className="lg:w-1/2 bg-[#E2E8F033] backdrop-blur-md border border-white/10 rounded-xl p-4 md:p-8">
-            <h3 className="text-white text-xl font-semibold mb-6">Send us a message</h3>
+            <h3 className="text-white text-xl font-semibold mb-6">
+              Send us a message
+            </h3>
 
             <div className="flex flex-col gap-4">
               {/* Row 1 */}
@@ -258,15 +268,74 @@ export default function ContactSection() {
                   onChange={handleChange}
                   className="w-full appearance-none bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors text-white"
                 >
-                  <option value="" disabled className="text-gray-700 bg-white">Select your role</option>
-                  <option value="manager" className="text-gray-900 bg-white">Manager</option>
-                  <option value="hr" className="text-gray-900 bg-white">HR Professional</option>
-                  <option value="exec" className="text-gray-900 bg-white">Executive</option>
-                  <option value="trainer" className="text-gray-900 bg-white">Trainer</option>
-                  <option value="other" className="text-gray-900 bg-white">Other</option>
+                  <option value="" disabled className="text-gray-700 bg-white">
+                    Select training topic
+                  </option>
+
+                  <option value="leadership" className="text-gray-900 bg-white">
+                    Leadership Development
+                  </option>
+                  <option
+                    value="communication"
+                    className="text-gray-900 bg-white"
+                  >
+                    Communication Skills
+                  </option>
+                  <option
+                    value="team-building"
+                    className="text-gray-900 bg-white"
+                  >
+                    Team Building
+                  </option>
+                  <option
+                    value="conflict-management"
+                    className="text-gray-900 bg-white"
+                  >
+                    Conflict Management
+                  </option>
+                  <option
+                    value="time-management"
+                    className="text-gray-900 bg-white"
+                  >
+                    Time Management
+                  </option>
+                  <option
+                    value="employee-engagement"
+                    className="text-gray-900 bg-white"
+                  >
+                    Employee Engagement
+                  </option>
+                  <option
+                    value="performance-management"
+                    className="text-gray-900 bg-white"
+                  >
+                    Performance Management
+                  </option>
+                  <option
+                    value="workplace-culture"
+                    className="text-gray-900 bg-white"
+                  >
+                    Workplace Culture
+                  </option>
+                  <option
+                    value="change-management"
+                    className="text-gray-900 bg-white"
+                  >
+                    Change Management
+                  </option>
+                  <option value="other" className="text-gray-900 bg-white">
+                    Other
+                  </option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </div>
@@ -290,14 +359,25 @@ export default function ContactSection() {
                 >
                   {agreed && (
                     <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   )}
                 </div>
                 <span className="text-sm text-white leading-snug">
                   I agree to the{" "}
-                  <a href="#" className="text-white font-semibold hover:underline">Privacy Policy</a>
-                  {" "}and consent to Velocity Knowledge processing my data
+                  <a
+                    href="#"
+                    className="text-white font-semibold hover:underline"
+                  >
+                    Privacy Policy
+                  </a>{" "}
+                  and consent to Velocity Knowledge processing my data
                 </span>
               </label>
 
