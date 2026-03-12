@@ -23,7 +23,7 @@ export default function WhatWeDo() {
 
             <h2 className="text-4xl md:text-5xl [font-family:var(--font-dm-serif)] text-gray-900 leading-tight mb-4">
               How velocity knowledge
-              <br />
+
               helps build skills
             </h2>
 
@@ -52,7 +52,7 @@ export default function WhatWeDo() {
         </div>
 
         {/* Bottom Image */}
-        <div className="relative w-full h-[420px] rounded-2xl overflow-hidden">
+        <div className="relative w-full h-[320px] md:h-[420px] rounded-2xl overflow-hidden">
           <Image
             src="/images/about/about.jpg"
             alt="Team learning"

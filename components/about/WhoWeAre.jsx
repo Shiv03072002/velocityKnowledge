@@ -46,7 +46,7 @@ export default function WhoWeAre() {
 
             <h2 className="text-4xl md:text-5xl [font-family:var(--font-dm-serif)] text-gray-900 leading-tight">
               A Trusted Partner for
-              <br />
+              
               Professional Learning
             </h2>
           </div>

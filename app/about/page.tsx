@@ -1,6 +1,6 @@
 import Cta from "@/components/Home/Cta";
 
-import Partnersbar from "@/components/Home/Partnersbar";
+import Partnersbar from "@/components/about/Partnersbar";
 import AboutCta from '@/components/about/AboutCta'
 import OurApproach from '@/components/about/OurApproach'
 import WhoWeAre from '@/components/about/WhoWeAre'

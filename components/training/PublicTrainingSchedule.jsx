@@ -49,37 +49,41 @@ export default function PublicTrainingSchedule() {
 
         {/* Mobile View (Cards) */}
         <div className="block md:hidden space-y-4">
-          {sessions.map((row, i) => (
-            <div
-              key={i}
-              className="border border-gray-200 rounded-xl bg-white p-5 space-y-4 hover:shadow-md transition-shadow"
-            >
-              <div className="flex justify-between items-start">
-                <h3 className="text-gray-900 font-semibold text-base sm:text-lg">
-                  {row.course}
-                </h3>
-                <span className="text-gray-900 font-semibold text-base sm:text-lg">
-                  {row.price}
-                </span>
-              </div>
-              
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-gray-600 text-sm sm:text-base">
-                  <CalendarIcon />
-                  <span>{row.date}</span>
-                </div>
-                
-                <div className="text-gray-600 text-sm sm:text-base">
-                  {row.sessions}
-                </div>
-              </div>
-              
-              <button className="w-full bg-[#0F172A] hover:bg-black text-white text-sm sm:text-base font-medium px-5 py-3 rounded-lg transition">
-                Register Now
-              </button>
-            </div>
-          ))}
-        </div>
+  {sessions.map((row, i) => (
+    <div
+      key={i}
+      className="border border-gray-200 rounded-xl bg-white p-5 space-y-4 hover:shadow-md transition-shadow"
+    >
+      {/* Course Title - Full width */}
+      <h3 className="text-gray-900 font-semibold text-base sm:text-lg w-full">
+        {row.course}
+      </h3>
+      
+     
+      
+      {/* Date with icon - Full width */}
+      <div className="flex items-center gap-2 text-gray-600 text-sm sm:text-base w-full">
+        <CalendarIcon />
+        <span>{row.date}</span>
+      </div>
+      
+      {/* Sessions - Full width, below date */}
+      <div className="text-gray-600 text-sm sm:text-base w-full">
+        {row.sessions}
+      </div>
+
+       {/* Price - Full width, below title */}
+      <div className="text-gray-900 font-semibold text-base sm:text-lg w-full">
+        {row.price}
+      </div>
+      
+      {/* Button - Full width at bottom */}
+      <button className="w-full bg-[#0F172A] hover:bg-black text-white text-sm sm:text-base font-medium px-5 py-3 rounded-lg transition mt-2">
+        Register
+      </button>
+    </div>
+  ))}
+</div>
 
         {/* Desktop Table */}
         <div className="hidden md:block border border-gray-200 rounded-xl overflow-hidden bg-white">

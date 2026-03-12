@@ -33,10 +33,10 @@ export default function ProgramsHero() {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4 sm:mb-6 leading-tight">
+      <div className="relative md:max-w-4xl mx-auto px-4 sm:px-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4 sm:mb-6 leading-tight max-w-70 mx-auto md:max-w-160 ">
           Training programs built for
-          <br />
+          
           real work
         </h1>
 

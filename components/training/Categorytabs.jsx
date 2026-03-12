@@ -227,66 +227,56 @@ export default function CategoryFilters({ selectedCategory, onCategoryChange }) 
 
       {/* Mobile Slider with Swiper */}
       <div className="md:hidden relative py-4">
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={8}
-          slidesPerView="auto"
-          navigation={{
-            prevEl: '.custom-swiper-prev',
-            nextEl: '.custom-swiper-next',
-          }}
-          className="!px-8"
+  <Swiper
+    modules={[Navigation]}
+    spaceBetween={20}
+    slidesPerView={1} // Shows 1 full card + partial of next card to indicate swiping
+    centeredSlides={false}
+
+    navigation={{
+      prevEl: '.custom-swiper-prev',
+      nextEl: '.custom-swiper-next',
+    }}
+    className="!px-4"
+  >
+    {categories.map((cat, index) => (
+      <SwiperSlide key={index}>
+        <button
+          onClick={() => onCategoryChange(cat.name)}
+          className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border transition-all duration-200 ${
+            selectedCategory === cat.name
+              ? `${cat.activeColor} text-white border-transparent shadow-lg`
+              : "bg-white text-gray-700 border-gray-200 hover:border-gray-300"
+          }`}
         >
-          {categories.map((cat, index) => (
-            <SwiperSlide key={index} className="!w-auto">
-              <button
-                onClick={() => onCategoryChange(cat.name)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-all duration-200 ${
-                  selectedCategory === cat.name
-                    ? `${cat.activeColor} text-white border-transparent shadow-lg`
-                    : "bg-white text-gray-700 border-gray-200 hover:border-gray-300"
-                }`}
-              >
-                <span
-                  className={`w-7 h-7 rounded-md flex items-center justify-center ${
-                    selectedCategory === cat.name
-                      ? "bg-white/20 text-white"
-                      : cat.iconBg
-                  }`}
-                >
-                  {cat.icon}
-                </span>
-                <span className="text-xs font-semibold whitespace-nowrap">{cat.name}</span>
-              </button>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* Custom Navigation Arrows */}
-        <button className="custom-swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1.5 shadow-md border border-gray-200 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-          <svg className="w-4 h-4 text-gray-600" viewBox="0 0 16 16" fill="none">
-            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <span
+            className={`w-7 h-7 rounded-md flex items-center justify-center ${
+              selectedCategory === cat.name
+                ? "bg-white/20 text-white"
+                : cat.iconBg
+            }`}
+          >
+            {cat.icon}
+          </span>
+          <span className="text-xs font-semibold whitespace-nowrap">{cat.name}</span>
         </button>
-        
-        <button className="custom-swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-1.5 shadow-md border border-gray-200 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-          <svg className="w-4 h-4 text-gray-600" viewBox="0 0 16 16" fill="none">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
+      </SwiperSlide>
+    ))}
+  </Swiper>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-1 mt-3">
-          {categories.map((_, index) => (
-            <div
-              key={index}
-              className={`w-1 h-1 rounded-full transition-all ${
-                index === 0 ? 'w-3 bg-gray-600' : 'bg-gray-300'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
+  {/* Custom Navigation Arrows */}
+  <button className="custom-swiper-prev absolute -left-6 top-1/2 -translate-y-1/2 z-10  rounded-full p-1.5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+    <svg className="w-4 h-4 text-gray-600" viewBox="0 0 16 16" fill="none">
+      <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+  
+  <button className="custom-swiper-next absolute -right-6 top-1/2 -translate-y-1/2 z-10  rounded-full p-1.5  transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+    <svg className="w-4 h-4 text-gray-600" viewBox="0 0 16 16" fill="none">
+      <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+</div>
     </div>
   );
 }

@@ -82,9 +82,10 @@ export default function ContactSection() {
                             </span>
                         </div>
 
-                        <button className="flex items-center gap-2 bg-[#1E6FD9] hover:bg-[#1E6FD9]/90 text-white text-sm font-medium px-6 py-2.5 rounded-md transition">
-                            Send Message <ArrowRight className="w-4 h-4" />
-                        </button>
+                       <button className="flex items-center justify-center gap-2 w-full md:w-auto bg-[#1E6FD9] hover:bg-[#1E6FD9]/90 text-white text-sm font-medium px-6 py-2.5 rounded-md transition">
+  Send Message 
+  <ArrowRight className="w-4 h-4" />
+</button>
                     </div>
                 </div>
 
@@ -113,7 +114,7 @@ export default function ContactSection() {
                                     Email Us
                                 </h3>
                             </div>
-                            <p className="text-md text-gray-700 mb-4 leading-relaxed max-w-55">
+                            <p className="text-md text-gray-700 mb-4 leading-relaxed md:max-w-55">
                                 Send us your questions anytime and our team will respond shortly.
                             </p>
                             <a
@@ -134,7 +135,7 @@ export default function ContactSection() {
                                     Call Our Team
                                 </h3>
                             </div>
-                            <p className="text-md text-gray-700 mb-4 leading-relaxed max-w-55">
+                            <p className="text-md text-gray-700 mb-4 leading-relaxed md:max-w-55">
                                 Speak directly with our team about training programs and schedules.
                             </p>
                             <a

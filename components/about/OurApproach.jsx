@@ -23,7 +23,7 @@ export default function OurApproach() {
   ];
 
   return (
-    <section className="bg-[#F8FAFC] py-20">
+    <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
@@ -36,7 +36,7 @@ export default function OurApproach() {
 
             <h2 className="text-5xl font-normal text-gray-900 leading-snug [font-family:var(--font-dm-serif)]">
               A Structured Approach
-              <br />
+             
               to Building Skills
             </h2>
           </div>

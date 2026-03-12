@@ -13,11 +13,11 @@ export default function AboutCta() {
 
       {/* Content - relative to appear above background */}
       <div className="relative z-10 max-w-7xl mx-auto">
-        <span className="inline-block bg-white text-[#1E6FD9] text-[10px] sm:text-xs  tracking-tighter uppercase px-3 py-0.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6 font-medium">
+        <span className="inline-block bg-white text-[#1E6FD9] text-[10px] sm:text-xs  tracking-tighter uppercase px-3 py-1 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6 font-semibold">
          ABOUT VELOCITY KNOWLEDGE
         </span>
 
-        <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 [font-family:var(--font-dm-serif)] tracking-wider px-2">
+        <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 [font-family:var(--font-dm-serif)] tracking-wider px-2 max-w-70 mx-auto sm:max-w-4xl ">
           Who we are and what we do
         </h2>
 
@@ -33,7 +33,7 @@ export default function AboutCta() {
           ].map((item) => (
             <div
               key={item}
-              className="flex items-center gap-2 bg-white text-gray-800 text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-4 rounded-lg w-full sm:w-auto justify-center sm:justify-start transition-all duration-300 hover:scale-105 hover:shadow-md"
+              className="flex items-center gap-2 bg-white text-gray-800 text-xs sm:text-sm px-4 sm:px-5 py-4 sm:py-4 rounded-lg w-full sm:w-auto justify-center sm:justify-start transition-all duration-300 hover:scale-105 hover:shadow-md"
             >
               <div className="bg-[#EAF2FD] rounded-sm p-0.5 flex-shrink-0">
                 <Check className="w-3 h-3 sm:w-4 sm:h-4 text-[#1E6FD9]" />
