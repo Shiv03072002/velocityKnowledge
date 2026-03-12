@@ -211,15 +211,15 @@ export default function CategoryFilters({ selectedCategory, onCategoryChange }) 
                 : "bg-white text-gray-700 border-gray-100 hover:border-gray-200 hover:shadow-md hover:-translate-y-0.5"
             }`}
           >
-            <span
-              className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                selectedCategory === cat.name
-                  ? "bg-white/20 text-white"
-                  : `${cat.iconBg} group-hover:scale-110 `
-              }`}
-            >
-              {cat.icon}
-            </span>
+           <span
+  className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 ${
+    selectedCategory === cat.name
+      ? `bg-white ${cat.iconBg.replace("bg-", "text-")}`
+      : `${cat.iconBg} group-hover:scale-110`
+  }`}
+>
+  {cat.icon}
+</span>
             <span className="text-sm font-semibold tracking-wide">{cat.name}</span>
           </button>
         ))}

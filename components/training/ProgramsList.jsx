@@ -162,14 +162,14 @@ export default function ProgramList({ selectedCategory ,setOpenFilter}) {
       <div className="relative">
         <button
           onClick={() => setOpen(!open)}
-          className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 px-4 py-2 min-w-[110px] justify-between"
+          className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-700 px-4 py-2 min-w-[110px] justify-between"
         >
           {sort}
           <ChevronDown size={16} className="text-gray-400" />
         </button>
 
         {open && (
-          <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
+          <div className="absolute right-0 mt-2 w-full bg-gray-50 border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
             {options.map((item) => (
               <button
                 key={item}
