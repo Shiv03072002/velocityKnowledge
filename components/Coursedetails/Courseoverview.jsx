@@ -118,16 +118,16 @@ export default function CourseOverview() {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 bg-gray-900 rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white/80 text-sm leading-relaxed max-w-md">
+          <div className="mt-12 bg-gray-900 rounded-xl px-4 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-white text-sm leading-relaxed max-w-md">
               Programs can be adjusted based on individual or organizational needs.
               Please contact us to discuss format and availability.
             </p>
 
-            <button className="flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gray-100 transition whitespace-nowrap">
-              Contact Us
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <button className="flex items-center justify-center gap-2 w-full sm:w-auto bg-white text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gray-100 transition whitespace-nowrap">
+  Contact Us
+  <ArrowRight className="w-4 h-4" />
+</button>
           </div>
         </div>
 
