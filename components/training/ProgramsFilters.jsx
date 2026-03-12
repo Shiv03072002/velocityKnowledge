@@ -9,7 +9,7 @@ const filters = {
 
 function FilterGroup({ title, options, selected, onToggle }) {
   return (
-    <div className="mb-7">
+    <div className="mb-7 mt-0 md:mt-4">
       <h3 className="text-md font-semibold text-gray-900 mb-3">{title}</h3>
       <div className="flex flex-col gap-2.5">
         {options.map((opt) => (

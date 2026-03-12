@@ -2,7 +2,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import ProgramCard from "./ProgramCard";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown,SlidersHorizontal } from "lucide-react";
 
 const programs = [
   {
@@ -99,7 +99,7 @@ const programs = [
 
 const ITEMS_PER_PAGE = 4;
 
-export default function ProgramList({ selectedCategory }) {
+export default function ProgramList({ selectedCategory ,setOpenFilter}) {
   const [sort, setSort] = useState("All");
   const [open, setOpen] = useState(false);
   const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE);
@@ -131,44 +131,71 @@ export default function ProgramList({ selectedCategory }) {
   return (
     <div className="flex-1 min-w-0">
       {/* Header */}
-      <div className="flex items-center justify-between mb-5">
-        <p className="text-sm text-gray-600">
-          Showing <span className="font-semibold text-gray-900">{displayedPrograms.length}</span> of{" "}
-          <span className="font-semibold text-gray-900">{filteredPrograms.length} programs</span>
-        </p>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Sort by:</span>
+      <div className="mb-5">
 
-          <div className="relative">
-            {/* Button */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 px-4 py-2 min-w-[120px] justify-between"
-            >
-              {sort}
-              <ChevronDown size={16} className="text-gray-400" />
-            </button>
+  {/* Top Row */}
+  <div className="flex items-center justify-between">
 
-            {/* Dropdown */}
-            {open && (
-              <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
-                {options.map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => {
-                      setSort(item);
-                      setOpen(false);
-                    }}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            )}
+    {/* Left side */}
+    <div className="flex items-center gap-3">
+
+      {/* Filter button (mobile only) */}
+      <button
+        onClick={() => setOpenFilter(true)}
+        className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center lg:hidden"
+      >
+        <SlidersHorizontal size={16} />
+      </button>
+
+      {/* Desktop showing text */}
+      <p className="hidden sm:block text-sm text-gray-600">
+        Showing <span className="font-semibold text-gray-900">{displayedPrograms.length}</span> of{" "}
+        <span className="font-semibold text-gray-900">{filteredPrograms.length} programs</span>
+      </p>
+
+    </div>
+
+    {/* Sort */}
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-gray-500">Sort by:</span>
+
+      <div className="relative">
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 px-4 py-2 min-w-[110px] justify-between"
+        >
+          {sort}
+          <ChevronDown size={16} className="text-gray-400" />
+        </button>
+
+        {open && (
+          <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
+            {options.map((item) => (
+              <button
+                key={item}
+                onClick={() => {
+                  setSort(item);
+                  setOpen(false);
+                }}
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                {item}
+              </button>
+            ))}
           </div>
-        </div>
+        )}
       </div>
+    </div>
+
+  </div>
+
+  {/* Mobile Showing text */}
+  <p className="sm:hidden text-sm text-gray-600 mt-3">
+    Showing <span className="font-semibold text-gray-900">{displayedPrograms.length}</span> of{" "}
+    <span className="font-semibold text-gray-900">{filteredPrograms.length} programs</span>
+  </p>
+
+</div>
 
       {/* Cards */}
       <div className="flex flex-col gap-4">
