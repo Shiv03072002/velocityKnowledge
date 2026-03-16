@@ -100,11 +100,20 @@
 //     </section>
 //   );
 // }
-
 "use client";
 import { Search, Brain, Users, BarChart3, Code } from "lucide-react";
 
 export default function ProgramsHeader({ searchTerm, onSearchChange, onSearchSubmit }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Dispatch custom event with search term
+    const event = new CustomEvent('training-search', { 
+      detail: searchTerm 
+    });
+    window.dispatchEvent(event);
+    if (onSearchSubmit) onSearchSubmit(e);
+  };
+
   return (
     <section
       className="relative w-full py-16 sm:py-20 text-center text-white overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -145,7 +154,7 @@ export default function ProgramsHeader({ searchTerm, onSearchChange, onSearchSub
         {/* Search - Mobile Stacked Version */}
         <div className="max-w-xl mx-auto px-4 sm:px-0">
           {/* Mobile version (stacked) */}
-          <form onSubmit={onSearchSubmit} className="flex flex-col gap-3 sm:hidden">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:hidden">
             <div className="flex items-center bg-white rounded-xl overflow-hidden shadow-lg">
               <div className="pl-4 text-gray-400">
                 <Search size={20} />
@@ -167,7 +176,7 @@ export default function ProgramsHeader({ searchTerm, onSearchChange, onSearchSub
           </form>
 
           {/* Desktop version (inline) */}
-          <form onSubmit={onSearchSubmit} className="hidden sm:flex items-center bg-white rounded-xl overflow-hidden shadow-lg">
+          <form onSubmit={handleSubmit} className="hidden sm:flex items-center bg-white rounded-xl overflow-hidden shadow-lg">
             <div className="pl-4 text-gray-400">
               <Search size={20} />
             </div>
