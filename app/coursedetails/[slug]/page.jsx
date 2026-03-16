@@ -37,13 +37,7 @@ function CourseDetailsLoader() {
 
 export default async function Coursedetails({ params }) {
   const { slug } = await params;
-
-  console.log("Slug:", slug);
-
   const course = await getCourse(slug);
-
-  console.log("Course:", course);
-
   // If no course found
   if (!course) {
     return (
