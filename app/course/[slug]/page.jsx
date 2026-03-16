@@ -24,6 +24,8 @@ async function getCourse(slug) {
   return data[0];
 }
 
+
+
 // Loading component for Suspense
 function CourseDetailsLoader() {
   return (
@@ -47,6 +49,8 @@ export default async function Coursedetails({ params }) {
       </div>
     );
   }
+
+  console.log(course)
 
   return (
     <section>

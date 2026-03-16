@@ -4,7 +4,7 @@ import TrainingClient from "@/components/training/TrainingClient";
 async function getInitialPrograms() {
   try {
     const res = await fetch(
-      "https://velocityknowledge.com/wp-json/wp/v2/course?per_page=20",
+      "https://velocityknowledge.com/wp-json/wp/v2/course?per_page=60",
       {
         // ISR: revalidate every 60 seconds
         next: { revalidate: 60 },

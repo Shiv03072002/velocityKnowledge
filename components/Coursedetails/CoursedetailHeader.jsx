@@ -186,13 +186,13 @@ function CourseHero({ course }) {
             {course.title?.rendered || "No data available"}
           </h1>
 
-          <p className="text-[#94A3B8] text-base leading-relaxed max-w-xl mb-10">
+          <p className="text-[#94A3B8] text-base leading-relaxed max-w-xl mb-10 line-clamp-2">
             {description}
           </p>
 
           {/* Target Audience badge */}
           <div className="flex items-center gap-3">
-            <div className="flex -space-x-2">
+            {/* <div className="flex -space-x-2">
               {["https://i.pravatar.cc/40?img=32", "https://i.pravatar.cc/40?img=47", "https://i.pravatar.cc/40?img=12"].map(
                 (src, i) => (
                   <img
@@ -203,7 +203,7 @@ function CourseHero({ course }) {
                   />
                 )
               )}
-            </div>
+            </div> */}
             <div>
               <p className="text-white text-sm font-semibold">Target Audience</p>
               <p className="text-white text-xs">{targetAudience}</p>
