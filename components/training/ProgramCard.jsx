@@ -7,6 +7,7 @@ export default function ProgramCard({
   duration,
   format,
   popular,
+  slug,
 }) {
   const topicColors = {
     LEADERSHIP: "bg-blue-50 text-blue-600",
@@ -76,7 +77,7 @@ export default function ProgramCard({
           </span>
         </div>
 
-        <Link href={`/coursedetails`} className="inline-block w-full sm:w-auto">
+        <Link  href={`/coursedetails/${slug}`} className="inline-block w-full sm:w-auto">
           <button className="flex items-center justify-center sm:justify-start text-gray-800 text-sm font-semibold px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-all group/btn w-full sm:w-auto">
             View Details
             <span className="w-8 h-8 rounded-full flex items-center justify-center ml-1">
