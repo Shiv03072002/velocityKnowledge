@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/Home/Partnersbar.jsx", "app/coursedetails/[slug]/page.jsx"  ],
+, "components/Home/Partnersbar.jsx", "app/coursedetails/[slug]/page.jsx", "app/programs/page.jsx"  ],
   "exclude": ["node_modules"]
 }
