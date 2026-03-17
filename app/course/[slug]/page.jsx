@@ -50,7 +50,7 @@ export default async function Coursedetails({ params }) {
     );
   }
 
-  console.log(course)
+  
 
   return (
     <section>

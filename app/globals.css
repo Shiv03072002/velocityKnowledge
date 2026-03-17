@@ -40,3 +40,38 @@ button {
   cursor: pointer;
 }
 
+.course-content {
+  line-height: 1.7;
+  font-size: 18px;
+  color: #333;
+}
+
+.course-content p {
+  margin-bottom: 16px;
+}
+
+.course-content h1,
+.course-content h2,
+.course-content h3,
+.course-content h4 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Specific WP block list styling */
+.course-content ul.wp-block-list {
+  margin: 16px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.course-content ul.wp-block-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.course-content ul li::marker,
+.course-content ol li::marker {
+  color: #2b6cb0 !important;
+}
