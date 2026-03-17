@@ -173,14 +173,32 @@ export default function CoursePage({ course }) {
     const html = course.content.rendered;
     const details = [];
 
-    // Extract <p><strong>Label:</strong> Value</p>
+    const decodeHtml = (html) => {
+      if (typeof window === "undefined") {
+        // Server-side: basic replacement for common entities
+        return html
+          .replace(/&nbsp;/g, ' ')
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'")
+           .replace(/<br\s*\/?>/g, '')
+      }
+      
+      // Client-side: use textarea for full entity decoding
+      const txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    };
+
     const pMatches = html.match(/<p><strong>(.*?)<\/strong>\s*(.*?)<\/p>/g);
     if (pMatches) {
       pMatches.forEach((p) => {
         const match = p.match(/<p><strong>(.*?)<\/strong>\s*(.*?)<\/p>/);
         if (match) {
-          const label = match[1].trim();
-          const value = match[2].trim();
+          const label = decodeHtml(match[1].trim());
+          const value = decodeHtml(match[2].trim());
           if (label && value) details.push({ label, value });
         }
       });
