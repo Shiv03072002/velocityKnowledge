@@ -5,6 +5,136 @@ import { ChevronDown, SlidersHorizontal } from "lucide-react";
 
 const ITEMS_PER_PAGE = 4;
 
+// ==================== GLOBAL UTILITY FUNCTIONS ====================
+
+/**
+ * Decode HTML entities in a string
+ * @param {string} html - String containing HTML entities
+ * @returns {string} - Decoded string
+ */
+const decodeHtmlEntities = (html) => {
+  if (!html) return "";
+  
+  if (typeof window === "undefined") {
+    // Server-side: basic replacement for common entities
+    return html
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/<br\s*\/?>/g, ', ');
+  }
+  
+  // Client-side: use textarea for full entity decoding
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value.replace(/<br\s*\/?>/g, ', ');
+};
+
+/**
+ * Extract course information (duration, format, category) from HTML content
+ * @param {string} html - Course content HTML
+ * @returns {Object} - Object containing duration, format, and category
+ */
+const extractCourseInfo = (html) => {
+  if (!html) return { duration: "1 Day", format: "Instructor-Led", category: "Training" };
+
+  const text = html.replace(/<[^>]+>/g, " "); // remove HTML
+
+  const lengthMatch = text.match(/Length:\s*([^\n]+)/i);
+  const deliveryMatch = text.match(/Delivery:\s*([^\n]+)/i);
+  const categoryMatch = text.match(/Skill Category:\s*([^\n]+)/i);
+
+  return {
+    duration: lengthMatch ? lengthMatch[1].trim() : "1 Day",
+    format: deliveryMatch ? deliveryMatch[1].trim() : "Instructor-Led",
+    category: categoryMatch ? categoryMatch[1].trim() : "Training",
+  };
+};
+
+/**
+ * Extract clean description from HTML content by removing metadata and headings
+ * @param {string} html - Course content HTML
+ * @returns {string} - Clean description text
+ */
+const extractDescription = (html) => {
+  if (!html) return "";
+  
+  // Remove HTML tags
+  const text = html.replace(/<[^>]+>/g, " ");
+  
+  // Remove the course details section (labels and values)
+  const cleanText = text
+    // Remove patterns like "Label: Value" that appear at the beginning
+    .replace(/Topic:\s*[^\n]+\n?/gi, "")
+    .replace(/Target Audience:\s*[^\n]+\n?/gi, "")
+    .replace(/Skill Category:\s*[^\n]+\n?/gi, "")
+    .replace(/Delivery:\s*[^\n]+\n?/gi, "")
+    .replace(/Prerequisites:\s*[^\n]+\n?/gi, "")
+    .replace(/Pre-course Work:\s*[^\n]+\n?/gi, "")
+    .replace(/Length:\s*[^\n]+\n?/gi, "")
+    .replace(/Module \d+:\s*[^\n]+\n?/gi, "") // Remove module lines
+    // Remove various heading patterns
+    .replace(/^About this course:?\s*/gi, "")
+    .replace(/^About this program:?\s*/gi, "")
+    .replace(/^Course Description:?\s*/gi, "")
+    .replace(/^Program Description:?\s*/gi, "")
+    .replace(/^Overview:?\s*/gi, "")
+    .replace(/^Description:?\s*/gi, "")
+    .replace(/^Course Overview:?\s*/gi, "")
+    .replace(/^Program Overview:?\s*/gi, "")
+    .replace(/^Details:?\s*/gi, "")
+    .replace(/^Course Details:?\s*/gi, "")
+    .replace(/^Program Details:?\s*/gi, "")
+    // Remove headings that might be in the middle of text
+    .replace(/About this course:?\s*/gi, "")
+    .replace(/About this program:?\s*/gi, "")
+    .replace(/Course Description:?\s*/gi, "")
+    .replace(/Program Description:?\s*/gi, "")
+    .replace(/Overview:?\s*/gi, "")
+    .replace(/Description:?\s*/gi, "")
+    .replace(/Course Overview:?\s*/gi, "")
+    .replace(/Program Overview:?\s*/gi, "")
+    // Use decode function for entities
+    .replace(/&nbsp;/g, ' ')
+    // Clean up extra spaces and trim
+    .replace(/\s+/g, " ")
+    .trim();
+  
+  // Get first 160 characters for description
+  return cleanText.slice(0, 160) + (cleanText.length > 160 ? "..." : "");
+};
+
+/**
+ * Extract course details from HTML content (for sidebar)
+ * @param {string} html - Course content HTML
+ * @returns {Array} - Array of {label, value} objects
+ */
+const extractCourseDetails = (html) => {
+  if (!html) return [];
+  
+  const details = [];
+  
+  // Extract <p><strong>Label:</strong> Value</p>
+  const pMatches = html.match(/<p><strong>(.*?)<\/strong>\s*(.*?)<\/p>/g);
+  if (pMatches) {
+    pMatches.forEach((p) => {
+      const match = p.match(/<p><strong>(.*?)<\/strong>\s*(.*?)<\/p>/);
+      if (match) {
+        const label = decodeHtmlEntities(match[1].trim());
+        const value = decodeHtmlEntities(match[2].trim());
+        if (label && value) details.push({ label, value });
+      }
+    });
+  }
+  
+  return details;
+};
+
+// ==================== COMPONENT ====================
+
 export default function ProgramList({
   selectedCategory,
   setOpenFilter,
@@ -44,55 +174,6 @@ export default function ProgramList({
       Math.min(prev + ITEMS_PER_PAGE, filteredPrograms.length)
     );
   };
-
-  function extractCourseInfo(html) {
-    if (!html) return {};
-
-    const text = html.replace(/<[^>]+>/g, " "); // remove HTML
-
-    const lengthMatch = text.match(/Length:\s*([^\n]+)/i);
-    const deliveryMatch = text.match(/Delivery:\s*([^\n]+)/i);
-    const categoryMatch = text.match(/Skill Category:\s*([^\n]+)/i);
-
-    return {
-      duration: lengthMatch ? lengthMatch[1].trim() : "1 Day",
-      format: deliveryMatch ? deliveryMatch[1].trim() : "Instructor-Led",
-      category: categoryMatch ? categoryMatch[1].trim() : "Training",
-    };
-  }
-
-  function extractDescription(html) {
-    if (!html) return "";
-    
-    // Remove HTML tags
-    const text = html.replace(/<[^>]+>/g, " ");
-    
-    // Remove the course details section (labels and values)
-    const cleanText = text
-      // Remove patterns like "Label: Value" that appear at the beginning
-      .replace(/Topic:\s*[^\n]+\n?/gi, "")
-      .replace(/Target Audience:\s*[^\n]+\n?/gi, "")
-      .replace(/Skill Category:\s*[^\n]+\n?/gi, "")
-      .replace(/Delivery:\s*[^\n]+\n?/gi, "")
-      .replace(/Prerequisites:\s*[^\n]+\n?/gi, "")
-      .replace(/Pre-course Work:\s*[^\n]+\n?/gi, "")
-      .replace(/Length:\s*[^\n]+\n?/gi, "")
-      .replace(/Module \d+:\s*[^\n]+\n?/gi, "") // Remove module lines
-      // Remove "About this course" heading and similar
-      .replace(/About this course:?\s*/gi, "")
-      .replace(/About this program:?\s*/gi, "")
-      .replace(/Course Description:?\s*/gi, "")
-      .replace(/Program Description:?\s*/gi, "")
-      .replace(/Overview:?\s*/gi, "")
-      // Remove &nbsp; entities
-      .replace(/&nbsp;/g, ' ')
-      // Clean up extra spaces and trim
-      .replace(/\s+/g, " ")
-      .trim();
-    
-    // Get first 160 characters for description
-    return cleanText.slice(0, 160) + (cleanText.length > 160 ? "..." : "");
-  }
 
   return (
     <div className="flex-1 min-w-0">
@@ -177,13 +258,15 @@ export default function ProgramList({
           displayedPrograms.map((p) => {
             const info = extractCourseInfo(p.content?.rendered);
             const description = extractDescription(p.content?.rendered);
+            // Decode the title to handle &amp; and other entities
+            const decodedTitle = decodeHtmlEntities(p.title?.rendered || "");
 
             return (
               <ProgramCard
                 key={p.id}
                 slug={p.slug}
                 topic={info.category}
-                title={p.title?.rendered}
+                title={decodedTitle}
                 description={description}
                 duration={info.duration}
                 format={info.format}
