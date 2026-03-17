@@ -21,22 +21,35 @@ export default function TrainingClient({ initialPrograms }) {
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-  const fetchPrograms = useCallback(async (search = "") => {
-    setLoading(true);
-    try {
+ const fetchPrograms = useCallback(async (search = "") => {
+  setLoading(true);
+  try {
+    let allPrograms = [];
+    let page = 1;
+    let totalPages = 1;
+
+    do {
       const url = search
-        ? `https://velocityknowledge.com/wp-json/wp/v2/course?search=${encodeURIComponent(search)}&per_page=20`
-        : "https://velocityknowledge.com/wp-json/wp/v2/course?per_page=20";
+        ? `https://velocityknowledge.com/wp-json/wp/v2/course?search=${encodeURIComponent(search)}&per_page=100&page=${page}`
+        : `https://velocityknowledge.com/wp-json/wp/v2/course?per_page=100&page=${page}`;
 
       const res = await fetch(url);
       const data = await res.json();
-      setPrograms(data);
-    } catch (error) {
-      console.error("Error fetching programs:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+
+      allPrograms = allPrograms.concat(data);
+
+      // WordPress sends total pages in this header
+      totalPages = parseInt(res.headers.get("X-WP-TotalPages")) || 1;
+      page++;
+    } while (page <= totalPages);
+
+    setPrograms(allPrograms);
+  } catch (error) {
+    console.error("Error fetching programs:", error);
+  } finally {
+    setLoading(false);
+  }
+}, []);
 
   // Skip first render so SSR data isn't replaced by a redundant fetch
   useEffect(() => {
